@@ -1,0 +1,87 @@
+﻿<Window x:Class="AP8PO_Final.Views.EmployeeEditView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AP8PO_Final.Views"
+        mc:Ignorable="d"
+        Style="{DynamicResource CustomWindowStyle}"
+        Title="Přidání zaměstnance" Height="450" Width="800" WindowStartupLocation="CenterScreen" Topmost="True">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Grid.Row="1" Grid.Column="1" FontSize="25" HorizontalAlignment="Center"
+                   Grid.ColumnSpan="5" Margin="0,0,0,20">
+            Přidejte zaměstnance!
+        </TextBlock>
+
+
+        <!-- First name -->
+        <TextBlock Grid.Row="2" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+                   Grid.ColumnSpan="1" Margin="0,10,30,10">
+            Jméno: 
+        </TextBlock>
+
+        <TextBox x:Name="textBoxFirstName"  Grid.Row="2" Grid.Column="2" FontSize="25" MinWidth="180" Grid.ColumnSpan="3" Margin="0,10,0,10"  ></TextBox>
+
+
+        <!-- Second name -->
+        <TextBlock Grid.Row="3" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+                   Grid.ColumnSpan="1" Margin="0,10,30,10">
+            Příjmení :
+        </TextBlock>
+
+        <TextBox x:Name="textBoxSecondName" Grid.Row="3" Grid.Column="2" FontSize="25" MinWidth="180" Grid.ColumnSpan="3" Margin="0,10,0,10"  ></TextBox>
+
+        <!-- full Name -->
+        <TextBlock Grid.Row="4" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+                   Grid.ColumnSpan="1" Margin="0,10,30,10">
+            Celé jméno: 
+        </TextBlock>
+
+        <TextBox x:Name="textBoxFullName" Grid.Row="4" Grid.Column="2" FontSize="25" MinWidth="180" Grid.ColumnSpan="3" Margin="0,10,0,10"  ></TextBox>
+
+        <!-- Work mail -->
+        <TextBlock Grid.Row="5" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+                   Grid.ColumnSpan="1" Margin="0,10,30,10">
+            Pracovní email: 
+        </TextBlock>
+
+        <TextBox x:Name="textBoxWorkMailName" Grid.Row="5" Grid.Column="2" FontSize="25" MinWidth="180" Grid.ColumnSpan="3" Margin="0,10,0,10"  ></TextBox>
+
+        <!-- Personal mail -->
+        <TextBlock Grid.Row="6" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+                   Grid.ColumnSpan="1" Margin="0,10,30,10">
+            Osobní email:
+        </TextBlock>
+
+        <TextBox x:Name="textBoxPersonalMailName" Grid.Row="6" Grid.Column="2" FontSize="25" MinWidth="180" Grid.ColumnSpan="3" Margin="0,10,0,10"  ></TextBox>
+
+
+
+
+
+
+    </Grid>
+</Window>
