@@ -3,11 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AP8PO_Final"
+        xmlns:local="clr-namespace:AP8PO_Final" xmlns:viewmodels="clr-namespace:AP8PO_Final.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
         mc:Ignorable="d"
         Style="{DynamicResource CustomWindowStyle}"
                 FontFamily="Segoe UI"
-        Title="Generátor úvazků" Height="450" Width="800" FontSize="16" WindowStartupLocation="CenterScreen" Topmost="True">
+        Title="Generátor úvazků" Height="450" Width="800" FontSize="16" WindowStartupLocation="CenterScreen">
+    
+    
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -24,6 +27,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
+
+       
 
         <TextBlock Grid.Row="1" Grid.Column="2" FontSize="58" HorizontalAlignment="Center"
                    Grid.ColumnSpan="3" Margin="0,50,0,50">

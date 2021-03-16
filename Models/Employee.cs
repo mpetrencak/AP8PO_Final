@@ -41,7 +41,7 @@ namespace AP8PO_Final.Models
         /// Value 0 - 1.
         /// 0 for PHd student and agreement workers
         /// </summary>
-        double obligation { get; set; }             //uvazek
+        double Obligation { get; set; }             //uvazek
 
         /// <summary>
         /// List of work labels

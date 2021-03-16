@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
 using AP8PO_Final.Views;
+using TheRThemes;
 
 namespace AP8PO_Final
 {
@@ -23,7 +24,7 @@ namespace AP8PO_Final
     public partial class MainWindow : Window
     {
         EmployeeEditView employeeEditView;
-        MainWindow mainWindow;
+        public MainWindow mainWindow;
 
         public MainWindow()
         {
@@ -33,9 +34,9 @@ namespace AP8PO_Final
 
         private void BtnStart_Click(object sender, RoutedEventArgs e)
         {
-            employeeEditView = new EmployeeEditView();
+            employeeEditView = new EmployeeEditView(mainWindow);
             employeeEditView.Show();
-            mainWindow.Close();
+            mainWindow.Hide();
 
             
 
@@ -44,6 +45,20 @@ namespace AP8PO_Final
 
         private void BtnImport_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+
+        private void MenuItemTheme_Click(object sender, RoutedEventArgs e)
+        {
+            switch (int.Parse(((MenuItem)sender).Uid))
+            {
+                case 0: ThemesController.SetTheme(ThemesController.ThemeTypes.Light); break;
+                case 1: ThemesController.SetTheme(ThemesController.ThemeTypes.ColourfulLight); break;
+                case 2: ThemesController.SetTheme(ThemesController.ThemeTypes.Dark); break;
+                case 3: ThemesController.SetTheme(ThemesController.ThemeTypes.ColourfulDark); break;
+            }
+            e.Handled = true;
 
         }
     }
