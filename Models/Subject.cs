@@ -16,6 +16,22 @@ namespace AP8PO_Final.Models
         Language Language { get; set; }
         int SizeOfGroup { get; set; }
 
+
+        public Subject(string abbrevation, int weeks, int lectureHours,int exerciseHours, int semminarHours,
+                        CourseCompletionType courseCompletionType, Language language, int sizeOfGroup)
+        {
+            Abbrevation = abbrevation;
+            Weeks = weeks;
+            LectureHours = lectureHours;
+            ExerciseHours = exerciseHours;
+            SemminarHours = semminarHours;
+            CourseCompletionType = courseCompletionType;
+            Language = language;
+            SizeOfGroup = sizeOfGroup;
+
+            
+        }
+
         
 
        

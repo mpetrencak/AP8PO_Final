@@ -12,9 +12,22 @@ namespace AP8PO_Final.Models
         int Year { get; set; }
         Semester Semester { get; set; }
         int NumberOfStudents { get; set; }
-        StudyForm studyForm { get; set; }
+        StudyForm StudyForm { get; set; }
         StudyType StudyType { get; set; }
         Language Language { get; set; }
+
+
+        public Group(string abbrevation, int year, Semester semester, int numberOfStudents, StudyForm studyForm, StudyType studyType, Language language)
+        {
+            Abbrevation = abbrevation;
+            Year = year;
+            Semester = semester;
+            NumberOfStudents = numberOfStudents;
+            StudyForm = studyForm;
+            StudyType = studyType;
+            Language = Language;
+
+        }
 
 
     }

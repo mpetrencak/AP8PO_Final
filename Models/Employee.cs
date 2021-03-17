@@ -46,7 +46,58 @@ namespace AP8PO_Final.Models
         /// <summary>
         /// List of work labels
         /// </summary>
-        List<WorkLabel> workLabels { get; set; }
+        List<WorkLabel> WorkLabels { get; set; }
+
+
+        /// <summary>
+        /// Constructor with workLabels
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="secondName"></param>
+        /// <param name="fullName"></param>
+        /// <param name="workMail"></param>
+        /// <param name="personalEmail"></param>
+        /// <param name="pHdStudent"></param>
+        /// <param name="obligation"></param>
+        /// <param name="workLabels"></param>
+        public Employee(string firstName, string secondName, string fullName, string workEmail,
+                        string personalEmail, bool pHdStudent, double obligation, List<WorkLabel> workLabels)
+        {
+            FirstName = firstName;
+            SecondName = secondName;
+            FullName = fullName;
+            WorkEmail = workEmail;
+            PersonalEmail = personalEmail;
+            PHdStudent = pHdStudent;
+            Obligation = obligation;
+            WorkLabels = workLabels;
+
+        }
+
+
+
+        /// <summary>
+        /// Cunstructor without worklabels
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="secondName"></param>
+        /// <param name="fullName"></param>
+        /// <param name="workMail"></param>
+        /// <param name="personalEmail"></param>
+        /// <param name="pHdStudent"></param>
+        /// <param name="obligation"></param>
+        public Employee(string firstName, string secondName, string fullName, string workEmail,
+                string personalEmail, bool pHdStudent, double obligation)
+        {
+            FirstName = firstName;
+            SecondName = secondName;
+            FullName = fullName;
+            WorkEmail = workEmail;
+            PersonalEmail = personalEmail;
+            PHdStudent = pHdStudent;
+            Obligation = obligation;
+
+        }
 
     }
 }

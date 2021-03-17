@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.ComponentModel;
 using AP8PO_Final.Views;
 using TheRThemes;
+using AP8PO_Final.ViewModels;
 
 namespace AP8PO_Final
 {
@@ -23,20 +24,25 @@ namespace AP8PO_Final
     /// </summary>
     public partial class MainWindow : Window
     {
-        EmployeeEditView employeeEditView;
-        public MainWindow mainWindow;
+
+        EmployeeEditView EmployeeEditView;
+        EmployeeEditViewModel EmployeeEditViewModel;
+
 
         public MainWindow()
         {
             InitializeComponent();
-            mainWindow = this;
         }
 
         private void BtnStart_Click(object sender, RoutedEventArgs e)
         {
-            employeeEditView = new EmployeeEditView(mainWindow);
-            employeeEditView.Show();
-            mainWindow.Hide();
+            EmployeeEditViewModel = new EmployeeEditViewModel();
+            EmployeeEditView = new EmployeeEditView(this);
+            EmployeeEditView.DataContext = EmployeeEditViewModel;
+
+
+            EmployeeEditView.Show();
+            this.Hide();
 
             
 

@@ -16,5 +16,20 @@ namespace AP8PO_Final.Models
         int NumberOfWeeks { get; set; }
         Language Language { get; set; }
 
+
+        public WorkLabel(string name, Employee employee, Subject subject, LabelType labelType,
+            int numberOfStudents, int numberOfHours, int numberOfWeeks, Language language)
+        {
+            Name = name;
+            Employee = employee;
+            Subject = subject;
+            LabelType = labelType;
+            NumberOfStudents = numberOfStudents;
+            NumberOfHours = numberOfHours;
+            NumberOfWeeks = numberOfWeeks;
+            Language = language;
+
+        }
+
     }
 }

@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AP8PO_Final.Views"
+        xmlns:local="clr-namespace:AP8PO_Final"
+        xmlns:viewmodels="clr-namespace:AP8PO_Final.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:EmployeeEditViewModel}"
         mc:Ignorable="d"
         Style="{DynamicResource CustomWindowStyle}"      
-        Title="Přidání zaměstnance" Height="600" Width="800" WindowStartupLocation="CenterScreen" Closing="Window_Closing" SizeToContent="Manual">
+        Title="Přidání zaměstnance" Height="800" Width="1000" WindowStartupLocation="CenterScreen" Closing="Window_Closing" SizeToContent="Manual">
 
     <ScrollViewer HorizontalScrollBarVisibility="Visible">
         <Grid Margin="5">
@@ -83,7 +84,7 @@
                 Jméno:
             </TextBlock>
 
-            <TextBox x:Name="textBoxFirstName"  Grid.Row="2" Grid.Column="2" FontSize="25" MinWidth="180" Grid.ColumnSpan="3" Margin="0,10,20,10" Width="200"  ></TextBox>
+            <TextBox Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="2" Grid.Column="2" FontSize="25" MinWidth="180" Grid.ColumnSpan="3" Margin="0,10,20,10" Width="200"  ></TextBox>
 
 
             <!-- Second name -->
@@ -92,7 +93,7 @@
                 Příjmení :
             </TextBlock>
 
-            <TextBox x:Name="textBoxSecondName" Grid.Row="3" Grid.Column="2" FontSize="25" MinWidth="180" Grid.ColumnSpan="3" Margin="0,10,20,10" Width="200"  ></TextBox>
+            <TextBox Text="{Binding SecondName,UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="2" FontSize="25" MinWidth="180" Grid.ColumnSpan="3" Margin="0,10,20,10" Width="200"  ></TextBox>
 
             <!-- full Name -->
             <TextBlock Grid.Row="4" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
@@ -100,7 +101,7 @@
                 Celé jméno:
             </TextBlock>
 
-            <TextBox x:Name="textBoxFullName" Grid.Row="4" Grid.Column="2" FontSize="25" MinWidth="180" Grid.ColumnSpan="3" Margin="0,10,20,10" Width="200"  ></TextBox>
+            <TextBox Text="{Binding FullName,UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="2" FontSize="25" MinWidth="180" Grid.ColumnSpan="3" Margin="0,10,20,10" Width="200"  ></TextBox>
 
             <!-- Work mail -->
             <TextBlock Grid.Row="5" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
@@ -108,7 +109,7 @@
                 Pracovní email:
             </TextBlock>
 
-            <TextBox x:Name="textBoxWorkMail" Grid.Row="5" Grid.Column="2" FontSize="25" MinWidth="180" Grid.ColumnSpan="3" Margin="0,10,20,10" Width="200"  ></TextBox>
+            <TextBox Text="{Binding WorkEmail,UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="2" FontSize="25" MinWidth="180" Grid.ColumnSpan="3" Margin="0,10,20,10" Width="200"  ></TextBox>
 
             <!-- Personal mail -->
             <TextBlock Grid.Row="6" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
@@ -116,7 +117,7 @@
                 Osobní email:
             </TextBlock>
 
-            <TextBox x:Name="textBoxPersonalMail" Grid.Row="6" Grid.Column="2" FontSize="25" MinWidth="180" Grid.ColumnSpan="3" Margin="0,10,20,10" Width="200"  ></TextBox>
+            <TextBox Text="{Binding PersonalEmail,UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Grid.Column="2" FontSize="25" MinWidth="180" Grid.ColumnSpan="3" Margin="0,10,20,10" Width="200"  ></TextBox>
 
             <!-- PHd Student -->
             <TextBlock Grid.Row="7" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
@@ -124,7 +125,7 @@
                 Doktorand:
             </TextBlock>
 
-            <CheckBox x:Name="CheckBoxPHdStudent" Grid.Row="7" Grid.Column="2"></CheckBox>
+            <CheckBox IsChecked="{Binding PHdStudent}" Grid.Row="7" Grid.Column="2"></CheckBox>
 
             <!-- Uvazek -->
             <TextBlock Grid.Row="8" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
@@ -132,11 +133,11 @@
                 Úvazek:
             </TextBlock>
 
-            <TextBox x:Name="textBoxObligation" Grid.Row="8" Grid.Column="2" FontSize="25" MinWidth="180" Grid.ColumnSpan="3" Margin="0,10,20,10" Width="200"  ></TextBox>
+            <TextBox Text="{Binding Obligation, UpdateSourceTrigger=PropertyChanged}" Grid.Row="8" Grid.Column="2" FontSize="25" MinWidth="180" Grid.ColumnSpan="3" Margin="0,10,20,10" Width="200"  ></TextBox>
 
 
             <!-- Button Add -->
-            <Button x:Name="BtnAdd" Grid.Row="9" Grid.Column="1" Content="Přidej"
+            <Button Command="{Binding CommandAdd}" Grid.Row="9" Grid.Column="1" Content="Přidej"
                     HorizontalAlignment="Right" Grid.ColumnSpan="3" Margin="20" MinHeight="60"
                     MinWidth="300" FontSize="24" FontWeight="Normal" Cursor="Hand"
                     Click="BtnAdd_Click"/>
@@ -150,7 +151,7 @@
 
 
             <!-- List View -->
-            <ListView x:Name="ListViewEmployees" Grid.Row="2" Grid.Column="5" Grid.RowSpan="7" Margin="10,0">
+            <ListView ItemsSource="{Binding Employees}" Grid.Row="2" Grid.Column="5" Grid.RowSpan="9" Margin="10,0">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Jméno"> </GridViewColumn>
