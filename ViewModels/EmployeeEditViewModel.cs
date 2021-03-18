@@ -11,6 +11,8 @@ namespace AP8PO_Final.ViewModels
     {
         public ObservableCollection<Employee> Employees { get; set; }
 
+        private Employee _selectedEmployee;
+
         private string _firstName;
         public string FirstName
         {
@@ -118,7 +120,11 @@ namespace AP8PO_Final.ViewModels
         private void Add(object param)
         {
             Employee newEmployee = new Employee(FirstName, SecondName,FullName, WorkEmail, PersonalEmail, PHdStudent, Obligation);
+
             Employees.Add(newEmployee);
+
+            _selectedEmployee = newEmployee;
+            
 
 
 

@@ -144,23 +144,23 @@
 
 
             <!-- Button Smazat -->
-            <Button x:Name="BtnRemoveEmployee" Grid.Row="9" Grid.Column="5" Content="Vymaž"
-                    HorizontalAlignment="Right" Grid.ColumnSpan="1" Margin="20" MinHeight="30"
+            <Button x:Name="BtnRemoveEmployee" Grid.Row="11" Grid.Column="5" Content="Vymaž"
+                    HorizontalAlignment="Left" Grid.ColumnSpan="1" Margin="0,0,0,0" MinHeight="30"
                     MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"
                     Click="BtnEmployeeToNext_Click"/>
 
 
             <!-- List View -->
-            <ListView ItemsSource="{Binding Employees}" Grid.Row="2" Grid.Column="5" Grid.RowSpan="9" Margin="10,0">
+            <ListView ItemsSource="{Binding Employees}" Grid.Row="2" Grid.Column="5" Grid.RowSpan="9" Margin="0,0,0,20">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Jméno"> </GridViewColumn>
-                        <GridViewColumn Header="Příjmení"></GridViewColumn>
-                        <GridViewColumn Header="Celé jméno"></GridViewColumn>
-                        <GridViewColumn Header="Pracovní email"></GridViewColumn>
-                        <GridViewColumn Header="Osobní email"></GridViewColumn>
-                        <GridViewColumn Header="Doktorand"></GridViewColumn>
-                        <GridViewColumn Header="Úvazek"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Header="Jméno"> </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding SecondName}" Header="Příjmení"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding FullName}" Header="Celé jméno"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding WorkEmail}" Header="Pracovní email"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding PersonalEmail}" Header="Osobní email"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding PHdStudent}" Header="Doktorand"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Obligation}" Header="Úvazek"></GridViewColumn>
                         
 
                     </GridView>
