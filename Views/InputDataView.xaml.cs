@@ -17,75 +17,24 @@ using TheRThemes;
 namespace AP8PO_Final.Views
 {
     /// <summary>
-    /// Interakční logika pro EmployeeEditView.xaml
+    /// Interaction logic for InputDataView.xaml
     /// </summary>
-    public partial class EmployeeEditView : Window
+    public partial class InputDataView : Window
     {
         MainWindow MainWindow;
 
-
-        public GroupEditView GroupEditView { get; set; }
-        
-        
-        //GroupEditViewModel GroupEditViewModel;
-        //private List<Employee> employees = new List<Employee>();
-
-
-
-        public EmployeeEditView(MainWindow mainWindow)
+        public InputDataView(MainWindow mainWindow)
         {
             InitializeComponent();
             MainWindow = mainWindow;
-
-
         }
-
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if(this.IsActive)
+            if(this.Activate())
             {
                 MainWindow.Show();
             }
-            else
-            {
-                GroupEditView.Close();
-            }
-
-
-
- 
-        }
-        /*
-        private void BtnAdd_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-        */
-
-
-        private void BtnEmployeeToMenu_Click(object sender, RoutedEventArgs e)
-        {
-            if(MessageBox.Show("Opravdu se chcete vrátit do menu?","Vrátit",MessageBoxButton.YesNo,MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {
-                Hide();
-                MainWindow.Show();
-            }
-            else
-            {
-                return;
-            }
-
-        }
-
-        private void BtnEmployeeToNext_Click(object sender, RoutedEventArgs e)
-        {
-
-
-
-            GroupEditView.Show();
-            Hide();
-            
 
         }
 

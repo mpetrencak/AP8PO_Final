@@ -7,8 +7,9 @@ using AP8PO_Final.Models;
 
 namespace AP8PO_Final.ViewModels
 {
-    class EmployeeEditViewModel : ViewModelBase
+    public class EmployeeEditViewModel : ViewModelBase
     {
+        MainWindow MainWindow;
         public ObservableCollection<Employee> Employees { get; set; }
 
         private Employee _selectedEmployee;
@@ -99,10 +100,11 @@ namespace AP8PO_Final.ViewModels
 
 
 
-        public EmployeeEditViewModel()
+        public EmployeeEditViewModel(MainWindow mainWindow)
         {
             CommandAdd = new RelayCommand(Add, CanAdd);
             Employees = new ObservableCollection<Employee>();
+            MainWindow = mainWindow;
 
         }
 
@@ -121,6 +123,7 @@ namespace AP8PO_Final.ViewModels
         {
             Employee newEmployee = new Employee(_firstName, _secondName, _fullName, _workEmail, _personalEmail, _pHdStudent, _obligation);
 
+            MainWindow.Employees .Add(newEmployee);
             Employees.Add(newEmployee);
 
             _selectedEmployee = newEmployee;

@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace AP8PO_Final.ViewModels
 {
-    class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         private Action<object> _action;
         public event Func<bool> _canExecute;

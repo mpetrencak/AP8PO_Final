@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace AP8PO_Final
 {
-    class ViewModelBase : INotifyPropertyChanged
+    public class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

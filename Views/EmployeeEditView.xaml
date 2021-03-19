@@ -40,11 +40,6 @@
 
             <!--Menu-->
             <Menu VerticalAlignment="Top" Grid.ColumnSpan="2">
-                <!--File-->
-                <MenuItem Header="File">
-
-                </MenuItem>
-
 
                 <!--Theme-->
                 <MenuItem Header="Themes">

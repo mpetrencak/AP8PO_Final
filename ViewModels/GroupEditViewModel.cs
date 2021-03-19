@@ -7,11 +7,15 @@ using AP8PO_Final.Models;
 
 namespace AP8PO_Final.ViewModels
 {
-    class GroupEditViewModel : ViewModelBase
+    public class GroupEditViewModel : ViewModelBase
     {
+        MainWindow MainWindow;
         public ObservableCollection<Group> Groups { get; set; }
 
         private Group _selectedGroup;
+
+
+        
 
         private string _abbrevation;
         public string Abbrevation
@@ -138,10 +142,14 @@ namespace AP8PO_Final.ViewModels
 
 
 
-        public GroupEditViewModel()
+        public GroupEditViewModel(MainWindow mainWindow)
         {
+            
             CommandAdd = new RelayCommand(Add, CanAdd);
             Groups = new ObservableCollection<Group>();
+            MainWindow = mainWindow;
+
+            
 
 
         }
@@ -162,6 +170,7 @@ namespace AP8PO_Final.ViewModels
             Group newGroup = new Group(_abbrevation,_year,_semester,_numberOfStudents,_studyForm,_studyType,_language);
 
             Groups.Add(newGroup);
+            MainWindow.Groups.Add(newGroup);
 
             _selectedGroup = newGroup;
  

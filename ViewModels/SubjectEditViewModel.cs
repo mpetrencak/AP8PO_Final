@@ -7,8 +7,10 @@ using AP8PO_Final.Models;
 
 namespace AP8PO_Final.ViewModels
 {
-    class SubjectEditViewModel :ViewModelBase
+    public class SubjectEditViewModel :ViewModelBase
     {
+        MainWindow MainWindow;
+
         public ObservableCollection<Subject> Subjects { get; set; }
 
         private Subject _selectedSubject;
@@ -139,10 +141,11 @@ namespace AP8PO_Final.ViewModels
         public RelayCommand CommandAdd { get; set; }
 
 
-        public SubjectEditViewModel()
+        public SubjectEditViewModel(MainWindow mainWindow)
         {
             CommandAdd = new RelayCommand(Add, CanAdd);
             Subjects = new ObservableCollection<Subject>();
+            MainWindow = mainWindow;
 
 
         }
@@ -160,7 +163,10 @@ namespace AP8PO_Final.ViewModels
         private void Add(object param)
         {
             Subject newSubject = new Subject(_abbrevation, _weeks, _lectureHours, _exerciseHours, _semminarHours, _courseCompletionType, _language, _sizeOfGroup);
+
+            MainWindow.Subjects.Add(newSubject);
             Subjects.Add(newSubject);
+
 
             _selectedSubject = newSubject;
 

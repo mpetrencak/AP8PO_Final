@@ -15,8 +15,6 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
@@ -29,20 +27,54 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-       
+        <!--Menu-->
+        <Menu VerticalAlignment="Top" Grid.ColumnSpan="2">
+            <!--File-->
+            <MenuItem Header="File">
+                <MenuItem  Header="Open..." Template="{DynamicResource SingleDropDownMenuItem}" Uid="0"></MenuItem>
 
-        <TextBlock Grid.Row="1" Grid.Column="2" FontSize="58" HorizontalAlignment="Center"
+            </MenuItem>
+
+
+            <!--Theme-->
+            <MenuItem Header="Themes">
+                <MenuItem  Header="Light" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="0">
+                    <MenuItem.Icon>
+                        <Rectangle Stroke="#FF848484" Fill="#FFE8E8E8" StrokeThickness="2" StrokeLineJoin="Round"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Colourful Light" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="1">
+                    <MenuItem.Icon>
+                        <Rectangle Stroke="#FF2C7FF5" Fill="#FFE8E8E8" StrokeThickness="2" StrokeLineJoin="Round"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Dark" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="2">
+                    <MenuItem.Icon>
+                        <Rectangle Stroke="#FF404040" Fill="#FF1B1B1B" StrokeThickness="2" StrokeLineJoin="Round"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Colourful Dark" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="3">
+                    <MenuItem.Icon>
+                        <Rectangle Stroke="#FF2C7FF5" Fill="#FF1B1B1B" StrokeThickness="2" StrokeLineJoin="Round"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+
+
+        <TextBlock Grid.Row="1" Grid.Column="1" FontSize="58" HorizontalAlignment="Center"
                    Grid.ColumnSpan="3" Margin="0,50,0,50">
             Vítejte v aplikaci!
         </TextBlock>
 
 
-        <Button x:Name="BtnStart" Grid.Row="2" Grid.Column="2" Content="Přidat data ručně"
+        <Button x:Name="BtnStart" Grid.Row="2" Grid.Column="1" Content="Přidat data ručně"
                 HorizontalAlignment="Center" Grid.ColumnSpan="3" Margin="20" MinHeight="60"
                 MinWidth="300" FontSize="24" FontWeight="Normal" Cursor="Hand"
                 Click="BtnStart_Click"/>
         
-        <Button x:Name="BtnImport" Grid.Row="3" Grid.Column="2" Content="Nahrát data ze souboru"
+        <Button x:Name="BtnImport" Grid.Row="3" Grid.Column="1" Content="Nahrát data ze souboru"
                 HorizontalAlignment="Center" Grid.ColumnSpan="3" Margin="20" MinHeight="60"
                 MinWidth="300" FontSize="24" FontWeight="Normal" Cursor="Hand"
                 Click="BtnImport_Click"/>

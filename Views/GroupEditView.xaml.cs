@@ -22,16 +22,16 @@ namespace AP8PO_Final.Views
     public partial class GroupEditView : Window
     {
         MainWindow MainWindow;
-        Window Parent;
+        Window parent;
 
-        SubjectEditView SubjectEditView;
-        SubjectEditViewModel SubjectEditViewModel;
+        public SubjectEditView SubjectEditView { get; set; }
+        //SubjectEditViewModel SubjectEditViewModel;
 
         public GroupEditView(Window parent, MainWindow mainWindow)
         {
 
             InitializeComponent();
-            Parent = parent;
+            this.parent = parent;
             MainWindow = mainWindow;
         }
 
@@ -54,7 +54,7 @@ namespace AP8PO_Final.Views
         {
 
             Hide();
-            Parent.Show();
+            parent.Show();
 
 
 
@@ -96,9 +96,6 @@ namespace AP8PO_Final.Views
 
         private void BtnGroupToNext_Click(object sender, RoutedEventArgs e)
         {
-            SubjectEditView = new SubjectEditView(this, MainWindow);
-            SubjectEditViewModel = new SubjectEditViewModel();
-            SubjectEditView.DataContext = SubjectEditViewModel;
 
             SubjectEditView.Show();
             Hide();
