@@ -11,31 +11,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AP8PO_Final;
 using AP8PO_Final.Models;
-using AP8PO_Final.ViewModels;
 using TheRThemes;
 
 namespace AP8PO_Final.Views
 {
     /// <summary>
-    /// Interakční logika pro GroupEditView.xaml
+    /// Interaction logic for SubjectEditView.xaml
     /// </summary>
-    public partial class GroupEditView : Window
+    public partial class SubjectEditView : Window
     {
         MainWindow MainWindow;
         Window Parent;
 
-        SubjectEditView SubjectEditView;
-        SubjectEditViewModel SubjectEditViewModel;
-
-        public GroupEditView(Window parent, MainWindow mainWindow)
+        public SubjectEditView(Window parent, MainWindow mainWindow)
         {
-
             InitializeComponent();
-            Parent = parent;
             MainWindow = mainWindow;
+            Parent = parent;
         }
-
-
 
         private void MenuItemTheme_Click(object sender, RoutedEventArgs e)
         {
@@ -50,17 +43,12 @@ namespace AP8PO_Final.Views
 
         }
 
-        private void BtnGroupBack_Click(object sender, RoutedEventArgs e)
+        private void BtnSubjectToNext_Click(object sender, RoutedEventArgs e)
         {
-
-            Hide();
-            Parent.Show();
-
-
 
         }
 
-        private void BtnGroupToMenu_Click(object sender, RoutedEventArgs e)
+        private void BtnSubjectToMenu_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Opravdu se chcete vrátit do menu?", "Vrátit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
@@ -82,7 +70,7 @@ namespace AP8PO_Final.Views
             }
             else
             {
-                SubjectEditView.Close();
+
             }
 
 
@@ -91,18 +79,10 @@ namespace AP8PO_Final.Views
 
         }
 
-
-
-
-        private void BtnGroupToNext_Click(object sender, RoutedEventArgs e)
+        private void BtnSubjectBack_Click(object sender, RoutedEventArgs e)
         {
-            SubjectEditView = new SubjectEditView(this, MainWindow);
-            SubjectEditViewModel = new SubjectEditViewModel();
-            SubjectEditView.DataContext = SubjectEditViewModel;
-
-            SubjectEditView.Show();
             Hide();
-
+            Parent.Show();
 
         }
 

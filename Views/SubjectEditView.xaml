@@ -1,15 +1,15 @@
-﻿<Window x:Class="AP8PO_Final.Views.GroupEditView"
+﻿<Window x:Class="AP8PO_Final.Views.SubjectEditView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DataContext="{d:DesignInstance Type=viewmodels:GroupEditViewModel}"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DataContext="{d:DesignInstance Type=viewmodels:SubjectEditViewModel}"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AP8PO_Final.Views" xmlns:viewmodels="clr-namespace:AP8PO_Final.ViewModels" xmlns:enums="clr-namespace:AP8PO_Final.Enums"
         mc:Ignorable="d"
                 Style="{DynamicResource CustomWindowStyle}"
-        Title="GroupEditView" Height="800" Width="1200" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+        Title="Obor" Height="800" Width="1200" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
 
-  
+
 
 
 
@@ -29,6 +29,7 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -81,78 +82,80 @@
             <!-- Header -->
             <TextBlock Grid.Row="1" Grid.Column="1" FontSize="25" HorizontalAlignment="Center"
                        Grid.ColumnSpan="5" Margin="0,0,0,20">
-                Přidejte studijní obor!
+                Přidejte předmět!
             </TextBlock>
 
 
             <!-- Abbrevation (Zkratka) -->
             <TextBlock Grid.Row="2" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
-                Zkratka: 
+                Zkratka:
             </TextBlock>
 
             <TextBox Text="{Binding Abbrevation, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="2" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
 
 
-            <!-- Year -->
+            <!-- Number of weeks -->
             <TextBlock Grid.Row="3" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
-                Rok: 
+                Počet týdnů: 
             </TextBlock>
 
-            <TextBox Text="{Binding Year,UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
+            <TextBox Text="{Binding Weeks,UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
 
-            <!-- Semester -->
+            
+            <!-- Lecture hours per week -->
             <TextBlock Grid.Row="4" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
-                Semestr: 
+                Přednášek týdně:
             </TextBlock>
-
-
-            <ComboBox Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="1" ItemsSource="{local:EnumBindingSourceExtension enums:Semester}" SelectedItem="{Binding Semester, UpdateSourceTrigger=PropertyChanged}">
-            </ComboBox>
             <!--
-            <TextBox Text="{Binding FullName,UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
+            <ComboBox Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="1" ItemsSource="{local:EnumBindingSourceExtension enums:Semester}" SelectedItem="{Binding Semester, UpdateSourceTrigger=PropertyChanged}">
+            </ComboBox> 
             -->
-            
-            <!-- Number of students -->
+            <TextBox Text="{Binding LectureHours,UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
+
+
+            <!-- Exercise hours per week -->
             <TextBlock Grid.Row="5" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
-                Počet studentů: 
+                Cvičení týdně: 
             </TextBlock>
 
-            <TextBox Text="{Binding NumberOfStudents,UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
+            <TextBox Text="{Binding ExerciseHours,UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
 
-            <!-- Study form -->
+            
+            
+            <!-- Semminar hours per week -->
             <TextBlock Grid.Row="6" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
-                Forma studia: :
+                Seminářů týdně: 
             </TextBlock>
-
-            <ComboBox Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="1" ItemsSource="{local:EnumBindingSourceExtension enums:StudyForm}" SelectedItem="{Binding StudyForm, UpdateSourceTrigger=PropertyChanged}">
-            </ComboBox>
 
             <!--
-            <TextBox Text="{Binding PersonalEmail,UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
+            <ComboBox Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="1" ItemsSource="{local:EnumBindingSourceExtension enums:StudyForm}" SelectedItem="{Binding StudyForm, UpdateSourceTrigger=PropertyChanged}">
+            </ComboBox>
             -->
-            
-            
-            
-            <!-- Study Type -->
+            <TextBox Text="{Binding SemminarHours,UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
+
+
+
+
+            <!-- Type of course complemention -->
             <TextBlock Grid.Row="7" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
-                Typ studia:
+                Zakončení: 
             </TextBlock>
 
-            <ComboBox Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="1" ItemsSource="{local:EnumBindingSourceExtension enums:StudyType}" SelectedItem="{Binding StudyType, UpdateSourceTrigger=PropertyChanged}">
+            <ComboBox Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="1" ItemsSource="{local:EnumBindingSourceExtension enums:CourseCompletionType}" SelectedItem="{Binding CourseCompletionType, UpdateSourceTrigger=PropertyChanged}">
             </ComboBox>
 
             <!--
             <CheckBox IsChecked="{Binding PHdStudent}" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="195,16,0,17"/>
             -->
-            
-            
-            
+
+
+
             <!-- Language -->
             <TextBlock Grid.Row="8" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
@@ -165,32 +168,60 @@
             <TextBox Text="{Binding Obligation, UpdateSourceTrigger=PropertyChanged}" Grid.Row="8" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
             -->
 
+
+            <!-- Size of student group -->
+            <TextBlock Grid.Row="9" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+                       Grid.ColumnSpan="1" Margin="0,10,30,10">
+                velikost skupiny: 
+            </TextBlock>
+
+            <!--
+            <ComboBox Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="1" ItemsSource="{local:EnumBindingSourceExtension enums:StudyForm}" SelectedItem="{Binding StudyForm, UpdateSourceTrigger=PropertyChanged}">
+            </ComboBox>
+            -->
+            <TextBox Text="{Binding SizeOfGroup,UpdateSourceTrigger=PropertyChanged}" Grid.Row="9" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <!-- Button Add -->
 
-            <Button Command="{Binding CommandAdd}" Grid.Row="9" Grid.Column="2" Content="Přidej"
+            <Button Command="{Binding CommandAdd}" Grid.Row="10" Grid.Column="2" Content="Přidej"
                     HorizontalAlignment="Center" Grid.ColumnSpan="3" Margin="0,20,10,20" MinHeight="60"
                     MinWidth="390" FontSize="24" FontWeight="Normal" Cursor="Hand"/>
 
 
 
-            <!-- Button Smazat -->            
-            <Button x:Name="BtnRemoveGroup" Grid.Row="11" Grid.Column="5" Content="Vymaž"
+            <!-- Button Smazat -->
+            <Button x:Name="BtnRemoveSubject" Grid.Row="12" Grid.Column="5" Content="Vymaž"
                     HorizontalAlignment="Left" Grid.ColumnSpan="1" Margin="0,0,0,0" MinHeight="30"
                     MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"/>
-            
+
 
 
             <!-- List View -->
-            <ListView ItemsSource="{Binding Groups}" Grid.Row="2" Grid.Column="5" Grid.RowSpan="9" Margin="0,0,0,20">
+            <ListView ItemsSource="{Binding Subjects}" Grid.Row="2" Grid.Column="5" Grid.RowSpan="10" Margin="0,0,0,20">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding Abbrevation}" Header="Zkratka"></GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Year}" Header="Rok"></GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Semester}" Header="Semestr"></GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding NumberOfStudents}" Header="Studentů"></GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding StudyForm}" Header="Forma studia"></GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding StudyType}" Header="Typ studia"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Weeks}" Header="Týdnů"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding LectureHours}" Header="Přednášky"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding ExerciseHours}" Header="Cvičení"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding SemminarHours}" Header="Semináře"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding CourseCompletionType}" Header="Zakončení"></GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Language}" Header="Jazyk"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding SizeOfGroup}" Header="Velikost skupiny"></GridViewColumn>
 
 
                     </GridView>
@@ -199,28 +230,28 @@
             </ListView>
 
             <!-- Button Zpet -->
-            
-            <Button x:Name="BtnGroupBack" Grid.Row="11" Grid.Column="1" Content="Zpět"
+
+            <Button x:Name="BtnSubjectBack" Grid.Row="12" Grid.Column="1" Content="Zpět"
                     HorizontalAlignment="Left" Grid.ColumnSpan="1" Margin="0,0,0,0" MinHeight="30"
                     MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"
-                    Click="BtnGroupBack_Click"/>
-            
+                    Click="BtnSubjectBack_Click"/>
+
 
             <!-- Button Menu -->
-            
-            <Button x:Name="BtnGroupToMenu" Grid.Row="11" Grid.Column="1" Content="Menu"
+
+            <Button x:Name="BtnSubjectToMenu" Grid.Row="12" Grid.Column="1" Content="Menu"
                     HorizontalAlignment="Right" Grid.ColumnSpan="1" Margin="0,0,0,0" MinHeight="30"
                     MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"
-                    Click="BtnGroupToMenu_Click"/>
-           
+                    Click="BtnSubjectToMenu_Click"/>
+
 
             <!-- Button Dalsi -->
-            
-            <Button x:Name="BtnGroupToNext" Grid.Row="11" Grid.Column="5" Content="Další"
+
+            <Button x:Name="BtnSubjectToNext" Grid.Row="12" Grid.Column="5" Content="Další"
                     HorizontalAlignment="Right" Grid.ColumnSpan="1" Margin="0,0,0,0" MinHeight="30"
                     MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"
-                    Click="BtnGroupToNext_Click"/>
-            
+                    Click="BtnSubjectToNext_Click"/>
+
 
 
 
@@ -241,3 +272,4 @@
 
     </ScrollViewer>
 </Window>
+

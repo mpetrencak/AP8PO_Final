@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Collections.ObjectModel;
 using AP8PO_Final.Enums;
+using AP8PO_Final.Models;
 
-namespace AP8PO_Final.Models
+namespace AP8PO_Final.ViewModels
 {
-    public class Subject
+    class SubjectEditViewModel :ViewModelBase
     {
+        public ObservableCollection<Subject> Subjects { get; set; }
+
+        private Subject _selectedSubject;
+
         private string _abbrevation;
         public string Abbrevation
         {
@@ -18,6 +24,7 @@ namespace AP8PO_Final.Models
             set
             {
                 _abbrevation = value;
+                OnPropertyChange("Abbrevation");
             }
         }
 
@@ -31,6 +38,7 @@ namespace AP8PO_Final.Models
             set
             {
                 _weeks = value;
+                OnPropertyChange("Weeks");
             }
         }
 
@@ -44,6 +52,7 @@ namespace AP8PO_Final.Models
             set
             {
                 _lectureHours = value;
+                OnPropertyChange("LectureHours");
             }
         }
 
@@ -51,14 +60,16 @@ namespace AP8PO_Final.Models
         public int ExerciseHours
         {
             get
-            {
+            { 
                 return _exerciseHours;
             }
-            set
-            {
+            set 
+            { 
                 _exerciseHours = value;
+                OnPropertyChange("ExerciseHours");
             }
         }
+
 
         private int _semminarHours;
         public int SemminarHours
@@ -70,8 +81,10 @@ namespace AP8PO_Final.Models
             set
             {
                 _semminarHours = value;
+                OnPropertyChange("SemminarHours");
             }
         }
+
 
         private CourseCompletionType _courseCompletionType;
         public CourseCompletionType CourseCompletionType
@@ -83,8 +96,9 @@ namespace AP8PO_Final.Models
             set
             {
                 _courseCompletionType = value;
+                OnPropertyChange("CourseCompletionType");
             }
-
+         
         }
 
         private Language _language;
@@ -97,6 +111,7 @@ namespace AP8PO_Final.Models
             set
             {
                 _language = value;
+                OnPropertyChange("Language");
             }
         }
 
@@ -110,27 +125,53 @@ namespace AP8PO_Final.Models
             set
             {
                 _sizeOfGroup = value;
+                OnPropertyChange("SizeOfGroup");
             }
         }
 
 
-        public Subject(string abbrevation, int weeks, int lectureHours,int exerciseHours, int semminarHours,
-                        CourseCompletionType courseCompletionType, Language language, int sizeOfGroup)
-        {
-            Abbrevation = abbrevation;
-            Weeks = weeks;
-            LectureHours = lectureHours;
-            ExerciseHours = exerciseHours;
-            SemminarHours = semminarHours;
-            CourseCompletionType = courseCompletionType;
-            Language = language;
-            SizeOfGroup = sizeOfGroup;
 
-            
+
+
+
+
+
+        public RelayCommand CommandAdd { get; set; }
+
+
+        public SubjectEditViewModel()
+        {
+            CommandAdd = new RelayCommand(Add, CanAdd);
+            Subjects = new ObservableCollection<Subject>();
+
+
         }
 
-        
 
-       
+        private bool CanAdd()
+        {
+            if(String.IsNullOrWhiteSpace(_abbrevation) == false && _weeks !=0 && _sizeOfGroup != 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void Add(object param)
+        {
+            Subject newSubject = new Subject(_abbrevation, _weeks, _lectureHours, _exerciseHours, _semminarHours, _courseCompletionType, _language, _sizeOfGroup);
+            Subjects.Add(newSubject);
+
+            _selectedSubject = newSubject;
+
+
+        }
+
+
+
+
+
+
+
     }
 }

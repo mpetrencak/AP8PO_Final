@@ -22,22 +22,39 @@ namespace AP8PO_Final.Views
     public partial class EmployeeEditView : Window
     {
         MainWindow MainWindow;
+
         GroupEditView GroupEditView;
         GroupEditViewModel GroupEditViewModel;
 
         private List<Employee> employees = new List<Employee>();
 
-        
+
 
         public EmployeeEditView(MainWindow mainWindow)
         {
             InitializeComponent();
             MainWindow = mainWindow;
+
+
+
+
         }
+
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            MainWindow.Show();
+            if(this.IsActive)
+            {
+                MainWindow.Show();
+            }
+            else
+            {
+                GroupEditView.Close();
+            }
+
+
+
+
  
         }
         /*
@@ -64,9 +81,12 @@ namespace AP8PO_Final.Views
 
         private void BtnEmployeeToNext_Click(object sender, RoutedEventArgs e)
         {
-            GroupEditView = new GroupEditView(this,MainWindow);
+            //if(GroupEditView == null && GroupEditViewModel == null)
+
+            GroupEditView = new GroupEditView(this, MainWindow);
             GroupEditViewModel = new GroupEditViewModel();
             GroupEditView.DataContext = GroupEditViewModel;
+
             GroupEditView.Show();
             Hide();
             

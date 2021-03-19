@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Style="{DynamicResource CustomWindowStyle}"
                 FontFamily="Segoe UI"
-        Title="Generátor úvazků" Height="450" Width="800" FontSize="16" WindowStartupLocation="CenterScreen">
+        Title="Generátor úvazků" Height="450" Width="800" FontSize="16" WindowStartupLocation="CenterScreen" Closed="Window_Closed">
     
     
     

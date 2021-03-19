@@ -141,6 +141,7 @@ namespace AP8PO_Final.ViewModels
         public GroupEditViewModel()
         {
             CommandAdd = new RelayCommand(Add, CanAdd);
+            Groups = new ObservableCollection<Group>();
 
 
         }

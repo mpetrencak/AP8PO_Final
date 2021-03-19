@@ -28,6 +28,14 @@ namespace AP8PO_Final
         EmployeeEditView EmployeeEditView;
         EmployeeEditViewModel EmployeeEditViewModel;
 
+        /*
+        GroupEditView GroupEditView;
+        GroupEditViewModel GroupEditViewModel;
+
+        SubjectEditView SubjectEditView;
+        SubjectEditViewModel subjectEditViewModel;
+        */
+
 
         public MainWindow()
         {
@@ -36,13 +44,18 @@ namespace AP8PO_Final
 
         private void BtnStart_Click(object sender, RoutedEventArgs e)
         {
+            
+            
+
             EmployeeEditViewModel = new EmployeeEditViewModel();
             EmployeeEditView = new EmployeeEditView(this);
             EmployeeEditView.DataContext = EmployeeEditViewModel;
 
 
+
+
             EmployeeEditView.Show();
-            this.Hide();
+            Hide();
 
             
 
@@ -66,6 +79,12 @@ namespace AP8PO_Final
             }
             e.Handled = true;
 
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            this.ReleaseAllTouchCaptures();
+            EmployeeEditView.Close();
         }
     }
 }
