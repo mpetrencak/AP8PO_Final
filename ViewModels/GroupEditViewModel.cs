@@ -1,27 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Collections.ObjectModel;
 using AP8PO_Final.Enums;
+using AP8PO_Final.Models;
 
-namespace AP8PO_Final.Models
+namespace AP8PO_Final.ViewModels
 {
-    //Studijní obor
-    public class Group
+    class GroupEditViewModel : ViewModelBase
     {
+        public ObservableCollection<Group> Groups { get; set; }
+
+        private Group _selectedGroup;
+
         private string _abbrevation;
-        public string Abbrevation               //Zkratka oboru
+        public string Abbrevation
         {
             get
             {
                 return _abbrevation;
+
             }
             set
             {
                 _abbrevation = value;
+                OnPropertyChange("Abbrevation");
             }
-
         }
-
 
 
 
@@ -36,10 +41,9 @@ namespace AP8PO_Final.Models
             set
             {
                 _year = value;
+                OnPropertyChange("Year");
             }
         }
-
-
 
 
         private Semester _semester;
@@ -52,10 +56,9 @@ namespace AP8PO_Final.Models
             set
             {
                 _semester = value;
+                OnPropertyChange("Semester");
             }
         }
-
-
 
 
         private int _numberOfStudents;
@@ -68,10 +71,9 @@ namespace AP8PO_Final.Models
             set
             {
                 _numberOfStudents = value;
+                OnPropertyChange("NumberOfStudents");
             }
         }
-
-
 
 
         private StudyForm _studyForm;
@@ -84,11 +86,9 @@ namespace AP8PO_Final.Models
             set
             {
                 _studyForm = value;
+                OnPropertyChange("StudyForm");
             }
         }
-
-
-
 
         private StudyType _studyType;
         public StudyType StudyType
@@ -100,11 +100,9 @@ namespace AP8PO_Final.Models
             set
             {
                 _studyType = value;
+                OnPropertyChange("StudyType");
             }
         }
-
-
-
 
         private Language _language;
         public Language Language
@@ -116,22 +114,60 @@ namespace AP8PO_Final.Models
             set
             {
                 _language = value;
+                OnPropertyChange("Language");
             }
         }
 
 
-        public Group(string abbrevation, int year, Semester semester, int numberOfStudents, StudyForm studyForm, StudyType studyType, Language language)
+        public RelayCommand CommandAdd { get; set; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public GroupEditViewModel()
         {
-            Abbrevation = abbrevation;
-            Year = year;
-            Semester = semester;
-            NumberOfStudents = numberOfStudents;
-            StudyForm = studyForm;
-            StudyType = studyType;
-            Language = language;
+            CommandAdd = new RelayCommand(Add, CanAdd);
+
 
         }
 
+        private bool CanAdd()
+        {
+            if (String.IsNullOrWhiteSpace(_abbrevation) == false && _year != 0 &&
+               _numberOfStudents != 0)
+            {
+                return true;
+            }
+            return false;
 
+        }
+
+        private void Add(object param)
+        {
+            Group newGroup = new Group(_abbrevation,_year,_semester,_numberOfStudents,_studyForm,_studyType,_language);
+
+            Groups.Add(newGroup);
+
+            _selectedGroup = newGroup;
+ 
+
+
+
+
+        }
     }
 }

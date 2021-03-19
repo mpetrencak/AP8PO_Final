@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AP8PO_Final;
 using AP8PO_Final.Models;
+using AP8PO_Final.ViewModels;
 using TheRThemes;
 
 namespace AP8PO_Final.Views
@@ -20,8 +21,9 @@ namespace AP8PO_Final.Views
     /// </summary>
     public partial class EmployeeEditView : Window
     {
-        MainWindow mainWindow;
-        EmployeeEditView employeeEditView;
+        MainWindow MainWindow;
+        GroupEditView GroupEditView;
+        GroupEditViewModel GroupEditViewModel;
 
         private List<Employee> employees = new List<Employee>();
 
@@ -30,28 +32,28 @@ namespace AP8PO_Final.Views
         public EmployeeEditView(MainWindow mainWindow)
         {
             InitializeComponent();
-            this.mainWindow = mainWindow;
-            employeeEditView = this;
+            MainWindow = mainWindow;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            mainWindow.Show();
+            MainWindow.Show();
  
         }
-
+        /*
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
 
         }
+        */
 
 
         private void BtnEmployeeToMenu_Click(object sender, RoutedEventArgs e)
         {
             if(MessageBox.Show("Opravdu se chcete vrátit do menu?","Vrátit",MessageBoxButton.YesNo,MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                employeeEditView.Hide();
-                mainWindow.Show();
+                Hide();
+                MainWindow.Show();
             }
             else
             {
@@ -62,6 +64,12 @@ namespace AP8PO_Final.Views
 
         private void BtnEmployeeToNext_Click(object sender, RoutedEventArgs e)
         {
+            GroupEditView = new GroupEditView(this,MainWindow);
+            GroupEditViewModel = new GroupEditViewModel();
+            GroupEditView.DataContext = GroupEditViewModel;
+            GroupEditView.Show();
+            Hide();
+            
 
         }
 

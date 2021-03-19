@@ -5,8 +5,12 @@ using System.Text;
 
 namespace AP8PO_Final.ViewModels 
 {
-    class MainWindowViewModel : INotifyPropertyChanged
+    class MainWindowViewModel : ViewModelBase
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public MainWindowViewModel()
+        {
+
+        }
+ 
     }
 }

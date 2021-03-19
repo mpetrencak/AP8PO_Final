@@ -119,7 +119,7 @@ namespace AP8PO_Final.ViewModels
 
         private void Add(object param)
         {
-            Employee newEmployee = new Employee(FirstName, SecondName,FullName, WorkEmail, PersonalEmail, PHdStudent, Obligation);
+            Employee newEmployee = new Employee(_firstName, _secondName, _fullName, _workEmail, _personalEmail, _pHdStudent, _obligation);
 
             Employees.Add(newEmployee);
 
