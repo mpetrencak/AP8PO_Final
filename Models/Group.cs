@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 using AP8PO_Final.Enums;
 
 namespace AP8PO_Final.Models
@@ -8,7 +11,9 @@ namespace AP8PO_Final.Models
     //Studijní obor
     public class Group
     {
+        
         private string _abbrevation;
+        [XmlAttribute("Abbrevation")]
         public string Abbrevation               //Zkratka oboru
         {
             get
@@ -26,6 +31,7 @@ namespace AP8PO_Final.Models
 
 
         private int _year;
+        [XmlAttribute("Year")]
         public int Year
         {
             get
@@ -43,6 +49,7 @@ namespace AP8PO_Final.Models
 
 
         private Semester _semester;
+        [XmlAttribute("Semester")]
         public Semester Semester
         {
             get
@@ -59,6 +66,7 @@ namespace AP8PO_Final.Models
 
 
         private int _numberOfStudents;
+        [XmlAttribute("NumberOfStudents")]
         public int NumberOfStudents
         {
             get
@@ -75,6 +83,7 @@ namespace AP8PO_Final.Models
 
 
         private StudyForm _studyForm;
+        [XmlAttribute("SudyForm")]
         public StudyForm StudyForm
         {
             get
@@ -91,6 +100,7 @@ namespace AP8PO_Final.Models
 
 
         private StudyType _studyType;
+        [XmlAttribute("StudyType")]
         public StudyType StudyType
         {
             get
@@ -107,6 +117,7 @@ namespace AP8PO_Final.Models
 
 
         private Language _language;
+        [XmlAttribute("Language")]
         public Language Language
         {
             get
@@ -132,6 +143,45 @@ namespace AP8PO_Final.Models
 
         }
 
+        public Group()
+        {
+            Abbrevation = null;
+            Year = 0;
+            Semester = 0;
+            NumberOfStudents = 0;
+            StudyForm = 0;
+            StudyType = 0;
+            Language = 0;
 
+        }
+
+        public XmlSchema GetSchema()
+        {
+            return (null);
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+            Abbrevation = reader.ReadContentAsString();
+            Year = Convert.ToInt32(reader.ReadContentAsString());
+            Semester = (Semester)Enum.Parse(typeof(Semester), reader.ReadContentAsString());
+            NumberOfStudents = Convert.ToInt32(reader.ReadContentAsString());
+            StudyForm = (StudyForm)Enum.Parse(typeof(StudyForm), reader.ReadContentAsString());
+            StudyType = (StudyType)Enum.Parse(typeof(StudyType), reader.ReadContentAsString());
+            Language = (Language)Enum.Parse(typeof(Language), reader.ReadContentAsString());
+
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            writer.WriteString(Abbrevation);
+            writer.WriteString(Year.ToString());
+            writer.WriteString(Semester.ToString());
+            writer.WriteString(NumberOfStudents.ToString());
+            writer.WriteString(StudyForm.ToString());
+            writer.WriteString(StudyType.ToString());
+            writer.WriteString(Language.ToString());
+
+        }
     }
 }

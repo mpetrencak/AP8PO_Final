@@ -31,7 +31,8 @@
         <Menu VerticalAlignment="Top" Grid.ColumnSpan="2">
             <!--File-->
             <MenuItem Header="File">
-                <MenuItem  Header="Open..." Template="{DynamicResource SingleDropDownMenuItem}" Uid="0"></MenuItem>
+                <MenuItem x:Name="Open"  Header="Open..." Template="{DynamicResource SingleDropDownMenuItem}" Uid="0" Command="{Binding CommandOpen}"></MenuItem>
+                
 
             </MenuItem>
 

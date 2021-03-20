@@ -34,8 +34,8 @@
         <Menu VerticalAlignment="Top" Grid.ColumnSpan="2">
             <!--File-->
             <MenuItem Header="File">
-                <MenuItem  Header="Open..." Template="{DynamicResource SingleDropDownMenuItem}" Uid="0"></MenuItem>
-                <MenuItem  Header="Save..." Template="{DynamicResource SingleDropDownMenuItem}" Uid="0"></MenuItem>
+                <MenuItem  Header="Open..." Template="{DynamicResource SingleDropDownMenuItem}" Uid="0" Command="{Binding CommandOpen}"></MenuItem>
+                <MenuItem  Header="Save..." Template="{DynamicResource SingleDropDownMenuItem}" Uid="1"></MenuItem>
 
             </MenuItem>
 
@@ -188,6 +188,12 @@
         <Button Command="{Binding CommandAdd}" Grid.Row="5" Grid.Column="3" Content="Vygeneruj štítky"
                     HorizontalAlignment="Center"  Margin="0,20,10,20" MinHeight="60"
                     MinWidth="390" FontSize="24" FontWeight="Normal" Cursor="Hand"/>
+
+        <!-- Button Save -->
+        <Button Command="{Binding CommandSave}" Grid.Row="5" Grid.Column="1" Content="Ulož do xml"
+                    HorizontalAlignment="Left"  Margin="0,20,10,20" MinHeight="60"
+                    MinWidth="150" FontSize="24" FontWeight="Normal" Cursor="Hand"/>
+
 
 
 

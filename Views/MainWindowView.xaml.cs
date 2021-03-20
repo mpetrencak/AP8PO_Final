@@ -94,6 +94,8 @@ namespace AP8PO_Final
         private void BtnImport_Click(object sender, RoutedEventArgs e)
         {
             InputDataViewModel = new InputDataViewModel(this);
+            InputDataView.DataContext = InputDataViewModel;
+
 
             InputDataView.Show();
             Hide();
@@ -127,5 +129,6 @@ namespace AP8PO_Final
             }
 
         }
+
     }
 }
