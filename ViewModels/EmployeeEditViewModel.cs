@@ -123,7 +123,7 @@ namespace AP8PO_Final.ViewModels
         {
             Employee newEmployee = new Employee(_firstName, _secondName, _fullName, _workEmail, _personalEmail, _pHdStudent, _obligation);
 
-            MainWindow.Employees .Add(newEmployee);
+            MainWindow.Employees.Add(newEmployee);
             Employees.Add(newEmployee);
 
             _selectedEmployee = newEmployee;

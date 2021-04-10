@@ -16,15 +16,60 @@ namespace AP8PO_Final.ViewModels
         Window _mainWindow;
         private InputParameters _inputParameters{ get; set; }
 
-        public ObservableCollection<Employee> Employees { get; set; }
+        private ObservableCollection<Employee> _employees;
+        public ObservableCollection<Employee> Employees
+        {
+            get
+            {
+                return _employees;
 
-        public ObservableCollection<Group> Groups { get; set; }
+            }
 
-        public ObservableCollection<Subject> Subjects { get; set; }
+            set
+            {
+                _employees = value;
+                OnPropertyChange("Employees");
+
+            }
+        }
+
+
+
+        private ObservableCollection<Group> _groups;
+        public ObservableCollection<Group> Groups
+        { 
+            get
+            {
+                return _groups;
+            }
+            set
+            {
+                _groups = value;
+                OnPropertyChange("Groups");
+            }
+        }
+
+
+
+        private ObservableCollection<Subject> _subjects;
+        public ObservableCollection<Subject> Subjects
+        {
+            get
+            {
+                return _subjects;
+            }
+            set 
+            {
+                _subjects = value;
+                OnPropertyChange("Subjects");
+
+            }
+        }
 
 
         public RelayCommand CommandSave { get; set; }
         public RelayCommand CommandOpen { get; set; }
+        public RelayCommand CommandGenerate { get; set; }
 
 
         /// <summary>
@@ -35,13 +80,13 @@ namespace AP8PO_Final.ViewModels
         {
             _mainWindow = mainWindow;
             Employees = new ObservableCollection<Employee>();
-            Employees = mainWindow.Employees;
+            //Employees = mainWindow.Employees;
 
             Groups = new ObservableCollection<Group>();
-            Groups = mainWindow.Groups;
+            //Groups = mainWindow.Groups;
 
             Subjects = new ObservableCollection<Subject>();
-            Subjects = mainWindow.Subjects;
+           // Subjects = mainWindow.Subjects;
 
             CommandSave = new RelayCommand(Save, CanSave);
             CommandOpen = new RelayCommand(Open, CanOpen);
@@ -57,19 +102,30 @@ namespace AP8PO_Final.ViewModels
         {
             _mainWindow = mainWindow;
 
-            Employees = new ObservableCollection<Employee>();
-            Employees = inputParameters.Employees;
+            Employees = new ObservableCollection<Employee>(inputParameters.Employees);
+            //Employees = inputParameters.Employees;
 
-            Groups = new ObservableCollection<Group>();
-            Groups = inputParameters.Groups;
+            Groups = new ObservableCollection<Group>(inputParameters.Groups);
+            //Groups = inputParameters.Groups;
 
             Subjects = new ObservableCollection<Subject>();
             Subjects = inputParameters.Subjects;
 
             CommandSave = new RelayCommand(Save, CanSave);
             CommandOpen = new RelayCommand(Open, CanOpen);
+            CommandGenerate = new RelayCommand(Generate, CanGenerate);
 
 
+
+        }
+
+        private bool CanGenerate()
+        {
+            return true;
+        }
+
+        private void Generate(object param)
+        {
 
         }
 
@@ -100,6 +156,8 @@ namespace AP8PO_Final.ViewModels
 
             _inputParameters = new InputParameters();
             _inputParameters = DeserializeToObject<InputParameters>(path);
+
+
 
             Employees = _inputParameters.Employees;
             Groups = _inputParameters.Groups;

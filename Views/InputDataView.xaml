@@ -185,7 +185,7 @@
 
 
         <!-- Button Add -->
-        <Button Command="{Binding CommandAdd}" Grid.Row="5" Grid.Column="3" Content="Vygeneruj štítky"
+        <Button Command="{Binding CommandGenerate}" Grid.Row="5" Grid.Column="3" Content="Vygeneruj štítky"
                     HorizontalAlignment="Center"  Margin="0,20,10,20" MinHeight="60"
                     MinWidth="390" FontSize="24" FontWeight="Normal" Cursor="Hand"/>
 
