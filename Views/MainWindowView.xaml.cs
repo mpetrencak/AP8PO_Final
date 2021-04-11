@@ -22,7 +22,7 @@ using System.Collections.ObjectModel;
 namespace AP8PO_Final
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for _mainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -36,13 +36,13 @@ namespace AP8PO_Final
 
 
         EmployeeEditView EmployeeEditView;
-        EmployeeEditViewModel EmployeeEditViewModel;
+        public EmployeeEditViewModel EmployeeEditViewModel { get; private set; }
        
         GroupEditView GroupEditView;
-        GroupEditViewModel GroupEditViewModel;
+        public GroupEditViewModel GroupEditViewModel { get; private set; }
 
         SubjectEditView SubjectEditView;
-        SubjectEditViewModel SubjectEditViewModel;
+        public SubjectEditViewModel SubjectEditViewModel { get; private set; }
 
 
 

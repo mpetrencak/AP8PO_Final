@@ -11,7 +11,7 @@ namespace AP8PO_Final.ViewModels
     {
         MainWindow MainWindow;
 
-        public ObservableCollection<Subject> Subjects { get; set; }
+        public ObservableCollection<Subject> Subjects { get; private set; }
 
         private Subject _selectedSubject;
 

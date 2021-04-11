@@ -21,12 +21,15 @@ namespace AP8PO_Final.Views
     /// </summary>
     public partial class SubjectEditView : Window
     {
-        MainWindow MainWindow;
-        Window parent;
+        MainWindow _mainWindow;
+        Window _parent;
 
-        EmployeeEditViewModel EmployeeEditViewModel;
-        GroupEditViewModel GroupEditViewModel;
-        SubjectEditViewModel SubjectEditViewModel;
+        EmployeeEditViewModel _employeeEditViewModel;
+        GroupEditViewModel _groupEditViewModel;
+        SubjectEditViewModel _subjectEditViewModel;
+        InputParameters _inputParameters;
+
+
 
         
 
@@ -34,11 +37,11 @@ namespace AP8PO_Final.Views
         public InputDataView InputDataView { get; set; }
 
         /*
-        public SubjectEditView(Window parent, MainWindow mainWindow, EmployeeEditViewModel employeeEditViewModel, GroupEditViewModel groupEditViewModel,SubjectEditViewModel subjectEditViewModel)
+        public SubjectEditView(Window _parent, _mainWindow mainWindow, EmployeeEditViewModel employeeEditViewModel, GroupEditViewModel groupEditViewModel,SubjectEditViewModel subjectEditViewModel)
         {
             InitializeComponent();
-            MainWindow = mainWindow;
-            this.parent= parent;
+            _mainWindow = mainWindow;
+            this._parent= _parent;
 
             EmployeeEditViewModel = employeeEditViewModel;
             GroupEditViewModel = groupEditViewModel;
@@ -49,8 +52,12 @@ namespace AP8PO_Final.Views
         public SubjectEditView(Window parent, MainWindow mainWindow)
         {
             InitializeComponent();
-            MainWindow = mainWindow;
-            this.parent = parent;
+            _mainWindow = mainWindow;
+            _employeeEditViewModel = _mainWindow.EmployeeEditViewModel;
+            _groupEditViewModel = _mainWindow.GroupEditViewModel;
+            _subjectEditViewModel = _mainWindow.SubjectEditViewModel;
+
+            _parent = parent;
 
         }
         
@@ -69,8 +76,10 @@ namespace AP8PO_Final.Views
 
         private void BtnSubjectToNext_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.InputDataViewModel = new InputDataViewModel(MainWindow);
-            MainWindow.InputDataView.DataContext = MainWindow.InputDataViewModel;
+
+            _inputParameters = new InputParameters(_employeeEditViewModel.Employees, _groupEditViewModel.Groups, _subjectEditViewModel.Subjects);
+            _mainWindow.InputDataViewModel = new InputDataViewModel(_mainWindow, _inputParameters);
+            _mainWindow.InputDataView.DataContext = _mainWindow.InputDataViewModel;
                 
 
             InputDataView.Show();
@@ -83,7 +92,7 @@ namespace AP8PO_Final.Views
             if (MessageBox.Show("Opravdu se chcete vrátit do menu?", "Vrátit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 Hide();
-                MainWindow.Show();
+                _mainWindow.Show();
             }
             else
             {
@@ -96,7 +105,7 @@ namespace AP8PO_Final.Views
         {
             if (this.IsActive)
             {
-                MainWindow.Show();
+                _mainWindow.Show();
             }
             else
             {
@@ -112,7 +121,7 @@ namespace AP8PO_Final.Views
         private void BtnSubjectBack_Click(object sender, RoutedEventArgs e)
         {
             Hide();
-            parent.Show();
+            _parent.Show();
 
         }
 

@@ -9,35 +9,25 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using AP8PO_Final;
-using AP8PO_Final.Models;
-using AP8PO_Final.ViewModels;
 using TheRThemes;
 
 namespace AP8PO_Final.Views
 {
     /// <summary>
-    /// Interaction logic for InputDataView.xaml
+    /// Interaction logic for WorkLabelEditView.xaml
     /// </summary>
-    public partial class InputDataView : Window
+    public partial class WorkLabelEditView : Window
     {
         MainWindow MainWindow;
+        Window parent;
 
-        public InputDataView(MainWindow mainWindow)
+        public WorkLabelEditView(Window parent, MainWindow mainWindow)
         {
             InitializeComponent();
             MainWindow = mainWindow;
+            this.parent = parent;
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if(this.Activate())
-            {
-            
-                MainWindow.Show();
-            }
-
-        }
 
         private void MenuItemTheme_Click(object sender, RoutedEventArgs e)
         {
@@ -52,11 +42,18 @@ namespace AP8PO_Final.Views
 
         }
 
-        private void ButtonGenerate_Click(object sender, RoutedEventArgs e)
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            WorkLabelEditView workLabelEditView = new WorkLabelEditView(this,MainWindow);
-            workLabelEditView.Show();
-            Hide();
+            if (this.IsActive)
+            {
+                MainWindow.Show();
+            }
+            else
+            {
+
+            }
         }
+
+
     }
 }

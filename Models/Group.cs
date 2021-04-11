@@ -155,6 +155,22 @@ namespace AP8PO_Final.Models
 
         }
 
+
+        public override string ToString()
+        {
+            return _abbrevation;
+        }
+
+
+
+
+
+
+
+
+
+
+
         public XmlSchema GetSchema()
         {
             return (null);

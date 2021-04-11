@@ -8,6 +8,8 @@ using System.IO;
 using Microsoft.Win32;
 using System.Windows;
 using System.Xml.Serialization;
+using AP8PO_Final;
+
 
 namespace AP8PO_Final.ViewModels
 {
@@ -90,6 +92,7 @@ namespace AP8PO_Final.ViewModels
 
             CommandSave = new RelayCommand(Save, CanSave);
             CommandOpen = new RelayCommand(Open, CanOpen);
+            CommandGenerate = new RelayCommand(Generate, CanGenerate);
 
         }
 
@@ -108,8 +111,8 @@ namespace AP8PO_Final.ViewModels
             Groups = new ObservableCollection<Group>(inputParameters.Groups);
             //Groups = inputParameters.Groups;
 
-            Subjects = new ObservableCollection<Subject>();
-            Subjects = inputParameters.Subjects;
+            Subjects = new ObservableCollection<Subject>(inputParameters.Subjects);
+            //Subjects = inputParameters.Subjects;
 
             CommandSave = new RelayCommand(Save, CanSave);
             CommandOpen = new RelayCommand(Open, CanOpen);
@@ -126,6 +129,7 @@ namespace AP8PO_Final.ViewModels
 
         private void Generate(object param)
         {
+           
 
         }
 

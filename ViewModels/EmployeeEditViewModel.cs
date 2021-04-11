@@ -10,7 +10,7 @@ namespace AP8PO_Final.ViewModels
     public class EmployeeEditViewModel : ViewModelBase
     {
         MainWindow MainWindow;
-        public ObservableCollection<Employee> Employees { get; set; }
+        public ObservableCollection<Employee> Employees { get; private set; }
 
         private Employee _selectedEmployee;
 

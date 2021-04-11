@@ -10,7 +10,7 @@ namespace AP8PO_Final.ViewModels
     public class GroupEditViewModel : ViewModelBase
     {
         MainWindow MainWindow;
-        public ObservableCollection<Group> Groups { get; set; }
+        public ObservableCollection<Group> Groups { get; private set; }
 
         private Group _selectedGroup;
 
