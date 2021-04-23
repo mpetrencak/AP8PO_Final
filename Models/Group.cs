@@ -10,6 +10,7 @@ namespace AP8PO_Final.Models
 {
     //Studijní obor
     public class Group
+    
     {
         
         private string _abbrevation;

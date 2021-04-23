@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,6 +29,8 @@ namespace AP8PO_Final.Views
         GroupEditViewModel _groupEditViewModel;
         SubjectEditViewModel _subjectEditViewModel;
         InputParameters _inputParameters;
+
+        ObservableCollection<Group> _groups;
 
 
 
@@ -136,22 +139,24 @@ namespace AP8PO_Final.Views
 
         private void LstBoxGroups_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-            var item = e.AddedItems;
-
             System.Windows.Controls.ListBox _sender = (System.Windows.Controls.ListBox)sender;
 
-            var v =_sender.SelectedItems;
+            var v = _sender.SelectedItems;
 
-            
+            _groups = new ObservableCollection<Group>();
+             
+            foreach(var item in v)
+            {
+                _groups.Add((Group)item);
+            }
+        }
 
 
-
-
-
-
-
+        private void BtnAddSubject_Click(object sender, RoutedEventArgs e)
+        {
+            _subjectEditViewModel.SelectedGroups = _groups;
 
         }
+
     }
 }

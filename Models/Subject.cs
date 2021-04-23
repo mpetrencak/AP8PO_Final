@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Xml;
 using System.Xml.Schema;
@@ -131,7 +132,78 @@ namespace AP8PO_Final.Models
             }
         }
 
+        private ObservableCollection<Group> _groups;
+        public ObservableCollection<Group> Groups
+        {
+            get
+            { 
+                return _groups;
+            }
+            set
+            {
+                _groups = value;
+            }
+        }
 
+
+
+        private string _groupsSrting;
+        /// <summary>
+        /// String contains names of all groups separated with ,
+        /// </summary>
+        public string GroupsString
+        {
+            get
+            {
+                return _groupsSrting;
+            }
+            set 
+            {
+                _groupsSrting = value;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /// <summary>
+        /// Ctor with basic imput parameters
+        /// </summary>
+        /// <param name="abbrevation"></param>
+        /// <param name="weeks"></param>
+        /// <param name="lectureHours"></param>
+        /// <param name="exerciseHours"></param>
+        /// <param name="semminarHours"></param>
+        /// <param name="courseCompletionType"></param>
+        /// <param name="language"></param>
+        /// <param name="sizeOfGroup"></param>
         public Subject(string abbrevation, int weeks, int lectureHours,int exerciseHours, int semminarHours,
                         CourseCompletionType courseCompletionType, Language language, int sizeOfGroup)
         {
@@ -145,6 +217,43 @@ namespace AP8PO_Final.Models
             SizeOfGroup = sizeOfGroup;
 
             
+        }
+
+
+
+        /// <summary>
+        /// //Ctor with list of Groups
+        /// </summary>
+        /// <param name="abbrevation"></param>
+        /// <param name="weeks"></param>
+        /// <param name="lectureHours"></param>
+        /// <param name="exerciseHours"></param>
+        /// <param name="semminarHours"></param>
+        /// <param name="courseCompletionType"></param>
+        /// <param name="language"></param>
+        /// <param name="sizeOfGroup"></param>
+        /// <param name="groups"></param>
+        public Subject(string abbrevation, int weeks, int lectureHours, int exerciseHours, int semminarHours,
+                       CourseCompletionType courseCompletionType, Language language, int sizeOfGroup, ObservableCollection<Group> groups)
+        {
+            Abbrevation = abbrevation;
+            Weeks = weeks;
+            LectureHours = lectureHours;
+            ExerciseHours = exerciseHours;
+            SemminarHours = semminarHours;
+            CourseCompletionType = courseCompletionType;
+            Language = language;
+            SizeOfGroup = sizeOfGroup;
+            _groupsSrting = String.Empty;
+
+            foreach(Group grp in groups)
+            {
+                _groupsSrting += grp.ToString();
+                _groupsSrting += ", ";
+
+            }
+
+
         }
 
         public Subject()

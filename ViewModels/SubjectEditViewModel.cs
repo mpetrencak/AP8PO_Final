@@ -13,7 +13,8 @@ namespace AP8PO_Final.ViewModels
 
         public ObservableCollection<Subject> Subjects { get; private set; }
 
-        private Subject _selectedSubject;
+        public ObservableCollection<Group> SelectedGroups { get; set; }
+
 
 
 
@@ -149,44 +150,6 @@ namespace AP8PO_Final.ViewModels
         }
 
 
-        private ObservableCollection<Group> _selectedGroups;
-
-        //public ObservableCollection<Group> SelectedGroups
-        //{
-        //    get
-        //    {
-        //        return _selectedGroups;
-
-        //    }
-        //    set
-        //    {
-        //        _selectedGroups = value;
-        //        OnPropertyChange("Groups");
-        //    }
-        //}
-
-        private Group _selectedGroup;
-        public Group SelectedGroup
-        {
-            get
-            {
-                return _selectedGroup;
-
-            }
-
-            set
-            {
-                _selectedGroup = value;
-                _selectedGroups.Add(_selectedGroup);
-                _selectedGroup = null;
-                OnPropertyChange("SelectedGorup");
-
-
-            }
-        }
-
-
-
 
 
 
@@ -203,7 +166,6 @@ namespace AP8PO_Final.ViewModels
             Subjects = new ObservableCollection<Subject>();
             MainWindow = mainWindow;
 
-            _selectedGroups = new ObservableCollection<Group>();
 
 
         }
@@ -233,13 +195,15 @@ namespace AP8PO_Final.ViewModels
 
         private void Add(object param)
         {
-            Subject newSubject = new Subject(_abbrevation, _weeks, _lectureHours, _exerciseHours, _semminarHours, _courseCompletionType, _language, _sizeOfGroup);
+
+
+
+            Subject newSubject = new Subject(_abbrevation, _weeks, _lectureHours, _exerciseHours, _semminarHours, _courseCompletionType, _language, _sizeOfGroup, SelectedGroups);
 
             MainWindow.Subjects.Add(newSubject);
             Subjects.Add(newSubject);
 
 
-            _selectedSubject = newSubject;
 
 
         }
