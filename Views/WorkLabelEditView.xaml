@@ -75,7 +75,10 @@
                 Přidejte předmět!
             </TextBlock>
 
-            <DataGrid Grid.Row="2" Grid.Column="2" ItemsSource="{Binding Employees}">
+            <DataGrid  Grid.Row="2" Grid.Column="2" ItemsSource="{Binding}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="AHOJPEPo"></DataGridTextColumn>
+                </DataGrid.Columns>
                 
             </DataGrid>
 

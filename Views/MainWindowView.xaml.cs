@@ -78,7 +78,6 @@ namespace AP8PO_Final
             //setting child window
             EmployeeEditView.GroupEditView = GroupEditView;
             GroupEditView.SubjectEditView = SubjectEditView;
-            SubjectEditView.InputDataView = InputDataView;
 
         }
 

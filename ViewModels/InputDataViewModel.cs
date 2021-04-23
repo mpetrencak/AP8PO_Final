@@ -13,6 +13,7 @@ using AP8PO_Final;
 
 namespace AP8PO_Final.ViewModels
 {
+    
     public class InputDataViewModel : ViewModelBase
     {
         Window _mainWindow;
@@ -117,6 +118,7 @@ namespace AP8PO_Final.ViewModels
             CommandSave = new RelayCommand(Save, CanSave);
             CommandOpen = new RelayCommand(Open, CanOpen);
             CommandGenerate = new RelayCommand(Generate, CanGenerate);
+
 
 
 

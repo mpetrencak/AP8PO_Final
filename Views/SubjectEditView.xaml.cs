@@ -31,10 +31,10 @@ namespace AP8PO_Final.Views
 
 
 
-        
+
 
         //child
-        public InputDataView InputDataView { get; set; }
+        InputDataView _inputDataView;
 
         /*
         public SubjectEditView(Window _parent, _mainWindow mainWindow, EmployeeEditViewModel employeeEditViewModel, GroupEditViewModel groupEditViewModel,SubjectEditViewModel subjectEditViewModel)
@@ -57,7 +57,11 @@ namespace AP8PO_Final.Views
             _groupEditViewModel = _mainWindow.GroupEditViewModel;
             _subjectEditViewModel = _mainWindow.SubjectEditViewModel;
 
+            _subjectEditViewModel.Groups = _mainWindow.Groups;
+
             _parent = parent;
+
+            _inputDataView = _mainWindow.InputDataView;
 
         }
         
@@ -80,9 +84,14 @@ namespace AP8PO_Final.Views
             _inputParameters = new InputParameters(_employeeEditViewModel.Employees, _groupEditViewModel.Groups, _subjectEditViewModel.Subjects);
             _mainWindow.InputDataViewModel = new InputDataViewModel(_mainWindow, _inputParameters);
             _mainWindow.InputDataView.DataContext = _mainWindow.InputDataViewModel;
-                
+            
 
-            InputDataView.Show();
+            _inputDataView = new InputDataView(_mainWindow);
+            _inputDataView.DataContext = _mainWindow.InputDataViewModel;
+            _inputDataView.Show();
+
+
+                
             Hide();
 
         }
@@ -125,5 +134,24 @@ namespace AP8PO_Final.Views
 
         }
 
+        private void LstBoxGroups_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            var item = e.AddedItems;
+
+            System.Windows.Controls.ListBox _sender = (System.Windows.Controls.ListBox)sender;
+
+            var v =_sender.SelectedItems;
+
+            
+
+
+
+
+
+
+
+
+        }
     }
 }

@@ -15,6 +15,8 @@ namespace AP8PO_Final.ViewModels
 
         private Subject _selectedSubject;
 
+
+
         private string _abbrevation;
         public string Abbrevation
         {
@@ -131,6 +133,58 @@ namespace AP8PO_Final.ViewModels
             }
         }
 
+        private ObservableCollection<Group> _groups;
+        public ObservableCollection<Group> Groups
+        { 
+            get 
+            {
+                return _groups; 
+                    
+            } 
+            set 
+            {
+                _groups = value;
+                OnPropertyChange("Groups");
+            }
+        }
+
+
+        private ObservableCollection<Group> _selectedGroups;
+
+        //public ObservableCollection<Group> SelectedGroups
+        //{
+        //    get
+        //    {
+        //        return _selectedGroups;
+
+        //    }
+        //    set
+        //    {
+        //        _selectedGroups = value;
+        //        OnPropertyChange("Groups");
+        //    }
+        //}
+
+        private Group _selectedGroup;
+        public Group SelectedGroup
+        {
+            get
+            {
+                return _selectedGroup;
+
+            }
+
+            set
+            {
+                _selectedGroup = value;
+                _selectedGroups.Add(_selectedGroup);
+                _selectedGroup = null;
+                OnPropertyChange("SelectedGorup");
+
+
+            }
+        }
+
 
 
 
@@ -139,16 +193,33 @@ namespace AP8PO_Final.ViewModels
 
 
         public RelayCommand CommandAdd { get; set; }
+        public RelayCommand CommandListBoxChange { get; set; }
 
 
         public SubjectEditViewModel(MainWindow mainWindow)
         {
             CommandAdd = new RelayCommand(Add, CanAdd);
+            CommandListBoxChange = new RelayCommand(Change, CanChange);
             Subjects = new ObservableCollection<Subject>();
             MainWindow = mainWindow;
 
+            _selectedGroups = new ObservableCollection<Group>();
+
 
         }
+
+        private void Change(object param)
+        {
+
+        }
+
+
+        private bool CanChange()
+        {
+            return true;
+
+        }
+
 
 
         private bool CanAdd()

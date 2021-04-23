@@ -159,6 +159,47 @@ namespace AP8PO_Final.Models
             SizeOfGroup = 0;
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public XmlSchema GetSchema()
         {
             return (null);
