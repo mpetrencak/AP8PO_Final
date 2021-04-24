@@ -133,6 +133,7 @@ namespace AP8PO_Final.Models
         }
 
         private ObservableCollection<Group> _groups;
+        [XmlElement(ElementName ="SubjectsGroups")]
         public ObservableCollection<Group> Groups
         {
             get
@@ -164,22 +165,41 @@ namespace AP8PO_Final.Models
         }
 
 
+        /// <summary>
+        /// Get number of students for subject from every group
+        /// </summary>
+        /// <returns></returns>
+        public int GetStudents()
+        {
+            int result = 0;
+
+            foreach(Group grp in _groups)
+            {
+                result += grp.NumberOfStudents;
+
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Get numbers of exercise hours for subject
+        /// </summary>
+        /// <returns></returns>
+        public int GetNumberOfExesices()
+        {
+            double result = GetStudents() / _sizeOfGroup;
+            return (int)Math.Ceiling(result);
+
+        }
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+        public override string ToString()
+        {
+            return _abbrevation;
+        }
 
 
 
@@ -245,6 +265,7 @@ namespace AP8PO_Final.Models
             Language = language;
             SizeOfGroup = sizeOfGroup;
             _groupsSrting = String.Empty;
+            _groups = groups;
 
             foreach(Group grp in groups)
             {
@@ -294,48 +315,5 @@ namespace AP8PO_Final.Models
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public XmlSchema GetSchema()
-        {
-            return (null);
-        }
-
-        public void ReadXml(XmlReader reader)
-        {
-            Abbrevation = reader.ReadContentAsString();
-            Weeks = Convert.ToInt32(reader.ReadContentAsString());
-            LectureHours = Convert.ToInt32(reader.ReadContentAsString());
-            ExerciseHours = Convert.ToInt32(reader.ReadContentAsString());
-            SemminarHours = Convert.ToInt32(reader.ReadContentAsString());
-            CourseCompletionType = (CourseCompletionType)Enum.Parse(typeof(CourseCompletionType), reader.ReadContentAsString());
-            Language = (Language)Enum.Parse(typeof(Language), reader.ReadContentAsString());
-            SizeOfGroup = Convert.ToInt32(reader.ReadContentAsString());
-        }
-
-        public void WriteXml(XmlWriter writer)
-        {
-            writer.WriteString(Abbrevation);
-            writer.WriteString(Weeks.ToString());
-            writer.WriteString(LectureHours.ToString());
-            writer.WriteString(ExerciseHours.ToString());
-            writer.WriteString(SemminarHours.ToString());
-            writer.WriteString(CourseCompletionType.ToString());
-            writer.WriteString(Language.ToString());
-            writer.WriteString(SizeOfGroup.ToString());
-        }
     }
 }

@@ -16,8 +16,10 @@ namespace AP8PO_Final.ViewModels
     
     public class InputDataViewModel : ViewModelBase
     {
-        Window _mainWindow;
+        MainWindow _mainWindow;
         private InputParameters _inputParameters{ get; set; }
+
+
 
         private ObservableCollection<Employee> _employees;
         public ObservableCollection<Employee> Employees
@@ -36,8 +38,6 @@ namespace AP8PO_Final.ViewModels
             }
         }
 
-
-
         private ObservableCollection<Group> _groups;
         public ObservableCollection<Group> Groups
         { 
@@ -51,8 +51,6 @@ namespace AP8PO_Final.ViewModels
                 OnPropertyChange("Groups");
             }
         }
-
-
 
         private ObservableCollection<Subject> _subjects;
         public ObservableCollection<Subject> Subjects
@@ -69,6 +67,26 @@ namespace AP8PO_Final.ViewModels
             }
         }
 
+        //worklabels
+        private ObservableCollection<WorkLabel> _workLabels;
+        /// <summary>
+        /// List of ObservableCollections, where obsC is list of labels per subject
+        /// </summary>
+        private List<ObservableCollection<WorkLabel>> _allWorklabels;
+        /// <summary>
+        /// List of ObservableCollections, where obsC is list of labels per subject
+        /// </summary>
+        public List<ObservableCollection<WorkLabel>> AllWorklabels
+        {
+            get
+            {
+                return _allWorklabels;
+            }
+            set
+            {
+                _allWorklabels = value;
+            }
+        }
 
         public RelayCommand CommandSave { get; set; }
         public RelayCommand CommandOpen { get; set; }
@@ -131,7 +149,73 @@ namespace AP8PO_Final.ViewModels
 
         private void Generate(object param)
         {
-           
+
+            _workLabels = new ObservableCollection<WorkLabel>();
+            WorkLabel wrklbl;
+
+
+
+
+
+            foreach (Subject sub in Subjects)
+            {
+                int id = 1;
+
+                //Lecture worklabels
+                if (sub.LectureHours > 0)
+                {
+                    wrklbl = new WorkLabel(sub, LabelType.Lecture,id++);
+                    _workLabels.Add(wrklbl);
+                }
+
+
+                //Exercise worklabels
+                if (sub.ExerciseHours > 0)
+                {
+                    int numberofExercises = sub.GetNumberOfExesices();
+                    for (int i = 0; i < numberofExercises; i++)
+                    {
+                        wrklbl = new WorkLabel(sub, LabelType.Exercise,id++);
+                        _workLabels.Add(wrklbl);
+                    }
+                }
+
+
+                //Semminar worklabels
+                if (sub.SemminarHours > 0)
+                {
+                    wrklbl = new WorkLabel(sub, LabelType.Seminar,id++);
+                    _workLabels.Add(wrklbl);
+
+                }
+
+
+                //classified credit worklabels
+                if(sub.CourseCompletionType == CourseCompletionType.ClassifiedCredit)
+                {
+                    wrklbl = new WorkLabel(sub, LabelType.ClassifiedCredit,id++);
+                    _workLabels.Add(wrklbl);
+
+                }
+                else    //exam worklabels + credit
+                {
+                    wrklbl = new WorkLabel(sub, LabelType.Credit,id++);
+                    _workLabels.Add(wrklbl);
+                    wrklbl = new WorkLabel(sub, LabelType.Exam,id++);
+                    _workLabels.Add(wrklbl);
+                }
+            }
+
+
+            _mainWindow.WorkLabels = _workLabels;
+            
+            _mainWindow.WorkLabelEditViewModel.WorkLabels = new ObservableCollection<WorkLabel>(_workLabels);
+
+
+
+
+
+
 
         }
 

@@ -21,20 +21,20 @@ namespace AP8PO_Final.Views
     /// </summary>
     public partial class InputDataView : Window
     {
-        MainWindow MainWindow;
+        MainWindow _mainWindow;
 
         public InputDataView(MainWindow mainWindow)
         {
             InitializeComponent();
-            MainWindow = mainWindow;
+            _mainWindow = mainWindow;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if(this.Activate())
             {
-            
-                MainWindow.Show();
+
+                _mainWindow.Show();
             }
 
         }
@@ -54,9 +54,15 @@ namespace AP8PO_Final.Views
 
         private void ButtonGenerate_Click(object sender, RoutedEventArgs e)
         {
-            WorkLabelEditView workLabelEditView = new WorkLabelEditView(this,MainWindow);
-            workLabelEditView.Show();
+                        
+
+            _mainWindow.WorkLabelEditView = new WorkLabelEditView(this,_mainWindow);
+            _mainWindow.WorkLabelEditViewModel = new WorkLabelEditViewModel(_mainWindow);
+            _mainWindow.WorkLabelEditView.DataContext = _mainWindow.WorkLabelEditViewModel;
+            _mainWindow.WorkLabelEditView.Show();
             Hide();
+
+
         }
     }
 }

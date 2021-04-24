@@ -75,12 +75,26 @@
                 Přidejte předmět!
             </TextBlock>
 
-            <DataGrid  Grid.Row="2" Grid.Column="2" ItemsSource="{Binding}">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="AHOJPEPo"></DataGridTextColumn>
-                </DataGrid.Columns>
-                
-            </DataGrid>
+            <!-- List View -->
+            <ListView ItemsSource="{Binding WorkLabels}" Grid.Row="2" Grid.Column="2" Grid.RowSpan="10" Margin="0,0,0,20">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Název"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding EmployeeString}" Header="Zaměstnanec"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding SubjectString}" Header="Předmět"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding LabelTypes}" Header="Typ štítku"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding NumberOfStudents}" Header="Počet studentů"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding NumberOfHours}" Header="Hodin týdně"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding NumberOfWeeks}" Header="Týdnů"></GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Language}" Header="Jazyk"></GridViewColumn>
+
+
+                    </GridView>
+                </ListView.View>
+
+            </ListView>
+
+
 
 
 

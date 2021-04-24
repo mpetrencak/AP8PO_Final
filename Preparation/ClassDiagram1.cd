@@ -21,10 +21,10 @@
       <FileName>Models\Subject.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AP8PO.WorkLabel">
+  <Class Name="AP8PO_Final.Models.WorkLabel">
     <Position X="4.25" Y="4.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAQAAAACAAAAAAAAIAAQQQACAAAAAgAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAQAAAACAAAAAAAAIAAQQQACAAAAAgAABAAEAAAAAA=</HashCode>
       <FileName>Models\WorkLabel.cs</FileName>
     </TypeIdentifier>
   </Class>

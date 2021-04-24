@@ -154,7 +154,20 @@ namespace AP8PO_Final.Models
         /// <summary>
         /// List of work labels
         /// </summary>
-        List<WorkLabel> WorkLabels { get; set; }
+        private List<WorkLabel> _workLabels;
+        [XmlElement(ElementName ="WorkLabels")]
+        public List<WorkLabel> WorkLabels
+        {
+            get
+            {
+                return _workLabels;
+            }
+            set
+            {
+                _workLabels = value;
+            }
+        }
+
 
 
         /// <summary>
@@ -225,48 +238,27 @@ namespace AP8PO_Final.Models
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public XmlSchema GetSchema()
+        public override string ToString()
         {
-            return (null);
+            return _fullName;
         }
 
-        public void ReadXml(XmlReader reader)
-        {
-            FirstName = reader.ReadContentAsString();
-            SecondName = reader.ReadContentAsString();
-            FullName = reader.ReadContentAsString();
-            WorkEmail = reader.ReadContentAsString();
-            PersonalEmail = reader.ReadContentAsString();
-            PHdStudent = Convert.ToBoolean(reader.ReadContentAsString());
-            Obligation = Convert.ToDouble(reader.ReadContentAsString());
 
-        }
 
-        public void WriteXml(XmlWriter writer)
-        {
-            writer.WriteString(FirstName);
-            writer.WriteString(SecondName);
-            writer.WriteString(FullName);
-            writer.WriteString(WorkEmail);
-            writer.WriteString(PersonalEmail);
-            writer.WriteString(PHdStudent.ToString());
-            writer.WriteString(Obligation.ToString());
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
