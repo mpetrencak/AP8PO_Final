@@ -267,12 +267,17 @@ namespace AP8PO_Final.Models
             _groupsSrting = String.Empty;
             _groups = groups;
 
-            foreach(Group grp in groups)
+            if(groups != null)
             {
-                _groupsSrting += grp.ToString();
-                _groupsSrting += ", ";
+                foreach (Group grp in groups)
+                {
+                    _groupsSrting += grp.ToString();
+                    _groupsSrting += ", ";
+
+                }
 
             }
+
 
 
         }

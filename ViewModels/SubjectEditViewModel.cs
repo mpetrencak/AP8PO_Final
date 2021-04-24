@@ -13,10 +13,36 @@ namespace AP8PO_Final.ViewModels
 
         public ObservableCollection<Subject> Subjects { get; private set; }
 
+        private Subject _selectedSubject;
+        public Subject SelectedSubject
+        {
+            get
+            {
+                return _selectedSubject;
+            }
+            set
+            {
+                _selectedSubject = value;
+                if(value != null)
+                {
+                    Abbrevation = value.Abbrevation;
+                    Weeks = value.Weeks;
+                    LectureHours = value.LectureHours;
+                    ExerciseHours = value.ExerciseHours;
+                    SemminarHours = value.SemminarHours;
+                    CourseCompletionType = value.CourseCompletionType;
+                    Language = value.Language;
+                    SizeOfGroup = value.SizeOfGroup;
+
+
+                }
+            }
+        }
+
+        /// <summary>
+        /// Selected items from listbox
+        /// </summary>
         public ObservableCollection<Group> SelectedGroups { get; set; }
-
-
-
 
         private string _abbrevation;
         public string Abbrevation
@@ -90,7 +116,6 @@ namespace AP8PO_Final.ViewModels
             }
         }
 
-
         private CourseCompletionType _courseCompletionType;
         public CourseCompletionType CourseCompletionType
         {
@@ -134,6 +159,22 @@ namespace AP8PO_Final.ViewModels
             }
         }
 
+        private string _groupsSrting;
+        /// <summary>
+        /// String contains names of all groups separated with ,
+        /// </summary>
+        public string GroupsString
+        {
+            get
+            {
+                return _groupsSrting;
+            }
+            set
+            {
+                _groupsSrting = value;
+            }
+        }
+
         private ObservableCollection<Group> _groups;
         public ObservableCollection<Group> Groups
         { 
@@ -155,12 +196,16 @@ namespace AP8PO_Final.ViewModels
 
 
 
+
+
+        public RelayCommand CommandDeleteSelected { get; set; }
         public RelayCommand CommandAdd { get; set; }
         public RelayCommand CommandListBoxChange { get; set; }
 
 
         public SubjectEditViewModel(MainWindow mainWindow)
         {
+            CommandDeleteSelected = new RelayCommand(Delete, CanDelete);
             CommandAdd = new RelayCommand(Add, CanAdd);
             CommandListBoxChange = new RelayCommand(Change, CanChange);
             Subjects = new ObservableCollection<Subject>();
@@ -169,6 +214,42 @@ namespace AP8PO_Final.ViewModels
 
 
         }
+
+
+
+        private bool CanDelete()
+        {
+            if (_selectedSubject == null)
+            {
+                return false;
+            }
+            return true;
+
+        }
+
+
+        private void Delete(object param)
+        {
+            Subjects.Remove(_selectedSubject);
+            _selectedSubject = null;
+
+            Abbrevation = String.Empty;
+            Weeks = 14;
+            LectureHours = 0;
+            ExerciseHours = 0;
+            SemminarHours = 0;
+            CourseCompletionType = CourseCompletionType.Exam;
+            SizeOfGroup = 0;
+            Language = Language.CZ;
+
+
+        }
+
+
+
+
+
+
 
         private void Change(object param)
         {

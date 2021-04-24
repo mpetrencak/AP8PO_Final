@@ -13,6 +13,27 @@ namespace AP8PO_Final.ViewModels
         public ObservableCollection<Group> Groups { get; private set; }
 
         private Group _selectedGroup;
+        public Group SelectedGroup
+        {
+            get
+            {
+                return _selectedGroup;
+            }
+            set
+            {
+                _selectedGroup = value;
+                if (value != null) 
+                {
+                    Abbrevation = value.Abbrevation;
+                    Year = value.Year;
+                    Semester = value.Semester;
+                    NumberOfStudents = value.NumberOfStudents;
+                    StudyForm = value.StudyForm;
+                    StudyType = value.StudyType;
+                    Language = value.Language;
+                }
+            }
+        }
 
 
         
@@ -32,8 +53,6 @@ namespace AP8PO_Final.ViewModels
             }
         }
 
-
-
         private int _year;
         public int Year
         {
@@ -49,7 +68,6 @@ namespace AP8PO_Final.ViewModels
             }
         }
 
-
         private Semester _semester;
         public Semester Semester
         {
@@ -63,7 +81,6 @@ namespace AP8PO_Final.ViewModels
                 OnPropertyChange("Semester");
             }
         }
-
 
         private int _numberOfStudents;
         public int NumberOfStudents
@@ -124,6 +141,7 @@ namespace AP8PO_Final.ViewModels
 
 
         public RelayCommand CommandAdd { get; set; }
+        public RelayCommand CommandDeleteSelected { get; set; }
 
 
 
@@ -146,6 +164,7 @@ namespace AP8PO_Final.ViewModels
         {
             
             CommandAdd = new RelayCommand(Add, CanAdd);
+            CommandDeleteSelected = new RelayCommand(Delete, CanDelete);
             Groups = new ObservableCollection<Group>();
             MainWindow = mainWindow;
 
@@ -153,6 +172,48 @@ namespace AP8PO_Final.ViewModels
 
 
         }
+
+
+        private bool CanDelete()
+        {
+            if (_selectedGroup == null)
+            {
+                return false;
+            }
+            return true;
+
+        }
+
+
+        private void Delete(object param)
+        {
+            Groups.Remove(_selectedGroup);
+            _selectedGroup = null;
+
+            Abbrevation = String.Empty;
+            Year = 0;
+            Semester = Semester.Winter;
+            NumberOfStudents = 0;
+            StudyForm = StudyForm.FullTime;
+            StudyType = StudyType.Bc;
+            Language = Language.CZ;
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private bool CanAdd()
         {

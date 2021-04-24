@@ -9,212 +9,211 @@
                 Style="{DynamicResource CustomWindowStyle}"
         Title="GroupEditView" Height="800" Width="1200" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
 
-  
 
 
 
 
 
-    <ScrollViewer HorizontalScrollBarVisibility="Visible">
-        <Grid Margin="5">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="20"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="20"/>
-            </Grid.RowDefinitions>
 
 
-            <!--Menu-->
-            <Menu VerticalAlignment="Top" Grid.ColumnSpan="2">
-                <!--Theme-->
-                <MenuItem Header="Themes">
-                    <MenuItem  Header="Light" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="0">
-                        <MenuItem.Icon>
-                            <Rectangle Stroke="#FF848484" Fill="#FFE8E8E8" StrokeThickness="2" StrokeLineJoin="Round"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="Colourful Light" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="1">
-                        <MenuItem.Icon>
-                            <Rectangle Stroke="#FF2C7FF5" Fill="#FFE8E8E8" StrokeThickness="2" StrokeLineJoin="Round"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="Dark" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="2">
-                        <MenuItem.Icon>
-                            <Rectangle Stroke="#FF404040" Fill="#FF1B1B1B" StrokeThickness="2" StrokeLineJoin="Round"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="Colourful Dark" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="3">
-                        <MenuItem.Icon>
-                            <Rectangle Stroke="#FF2C7FF5" Fill="#FF1B1B1B" StrokeThickness="2" StrokeLineJoin="Round"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+
+        <!--Menu-->
+        <Menu VerticalAlignment="Top" Grid.ColumnSpan="2">
+            <!--Theme-->
+            <MenuItem Header="Themes">
+                <MenuItem  Header="Light" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="0">
+                    <MenuItem.Icon>
+                        <Rectangle Stroke="#FF848484" Fill="#FFE8E8E8" StrokeThickness="2" StrokeLineJoin="Round"/>
+                    </MenuItem.Icon>
                 </MenuItem>
-            </Menu>
+                <MenuItem Header="Colourful Light" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="1">
+                    <MenuItem.Icon>
+                        <Rectangle Stroke="#FF2C7FF5" Fill="#FFE8E8E8" StrokeThickness="2" StrokeLineJoin="Round"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Dark" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="2">
+                    <MenuItem.Icon>
+                        <Rectangle Stroke="#FF404040" Fill="#FF1B1B1B" StrokeThickness="2" StrokeLineJoin="Round"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Colourful Dark" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="3">
+                    <MenuItem.Icon>
+                        <Rectangle Stroke="#FF2C7FF5" Fill="#FF1B1B1B" StrokeThickness="2" StrokeLineJoin="Round"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
 
 
-            <!-- Header -->
-            <TextBlock Grid.Row="1" Grid.Column="1" FontSize="25" HorizontalAlignment="Center"
+        <!-- Header -->
+        <TextBlock Grid.Row="1" Grid.Column="1" FontSize="25" HorizontalAlignment="Center"
                        Grid.ColumnSpan="5" Margin="0,0,0,20">
                 Přidejte studijní obor!
-            </TextBlock>
+        </TextBlock>
 
 
-            <!-- Abbrevation (Zkratka) -->
-            <TextBlock Grid.Row="2" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+        <!-- Abbrevation (Zkratka) -->
+        <TextBlock Grid.Row="2" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
-                Zkratka: 
-            </TextBlock>
+                Zkratka:
+        </TextBlock>
 
-            <TextBox Text="{Binding Abbrevation, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="2" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
+        <TextBox Text="{Binding Abbrevation, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="2" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
 
 
-            <!-- Year -->
-            <TextBlock Grid.Row="3" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+        <!-- Year -->
+        <TextBlock Grid.Row="3" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
-                Rok: 
-            </TextBlock>
+                Rok:
+        </TextBlock>
 
-            <TextBox Text="{Binding Year,UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
+        <TextBox Text="{Binding Year,UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
 
-            <!-- Semester -->
-            <TextBlock Grid.Row="4" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+        <!-- Semester -->
+        <TextBlock Grid.Row="4" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
-                Semestr: 
-            </TextBlock>
+                Semestr:
+        </TextBlock>
 
 
-            <ComboBox Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="1" ItemsSource="{local:EnumBindingSourceExtension enums:Semester}" SelectedItem="{Binding Semester, UpdateSourceTrigger=PropertyChanged}">
-            </ComboBox>
-            <!--
+        <ComboBox Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="1" ItemsSource="{local:EnumBindingSourceExtension enums:Semester}" SelectedItem="{Binding Semester, UpdateSourceTrigger=PropertyChanged}">
+        </ComboBox>
+        <!--
             <TextBox Text="{Binding FullName,UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
             -->
-            
-            <!-- Number of students -->
-            <TextBlock Grid.Row="5" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+
+        <!-- Number of students -->
+        <TextBlock Grid.Row="5" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
-                Počet studentů: 
-            </TextBlock>
+                Počet studentů:
+        </TextBlock>
 
-            <TextBox Text="{Binding NumberOfStudents,UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
+        <TextBox Text="{Binding NumberOfStudents,UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
 
-            <!-- Study form -->
-            <TextBlock Grid.Row="6" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+        <!-- Study form -->
+        <TextBlock Grid.Row="6" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
                 Forma studia: :
-            </TextBlock>
+        </TextBlock>
 
-            <ComboBox Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="1" ItemsSource="{local:EnumBindingSourceExtension enums:StudyForm}" SelectedItem="{Binding StudyForm, UpdateSourceTrigger=PropertyChanged}">
-            </ComboBox>
+        <ComboBox Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="1" ItemsSource="{local:EnumBindingSourceExtension enums:StudyForm}" SelectedItem="{Binding StudyForm, UpdateSourceTrigger=PropertyChanged}">
+        </ComboBox>
 
-            <!--
+        <!--
             <TextBox Text="{Binding PersonalEmail,UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
             -->
-            
-            
-            
-            <!-- Study Type -->
-            <TextBlock Grid.Row="7" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+
+
+
+        <!-- Study Type -->
+        <TextBlock Grid.Row="7" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
                 Typ studia:
-            </TextBlock>
+        </TextBlock>
 
-            <ComboBox Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="1" ItemsSource="{local:EnumBindingSourceExtension enums:StudyType}" SelectedItem="{Binding StudyType, UpdateSourceTrigger=PropertyChanged}">
-            </ComboBox>
+        <ComboBox Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="1" ItemsSource="{local:EnumBindingSourceExtension enums:StudyType}" SelectedItem="{Binding StudyType, UpdateSourceTrigger=PropertyChanged}">
+        </ComboBox>
 
-            <!--
+        <!--
             <CheckBox IsChecked="{Binding PHdStudent}" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="195,16,0,17"/>
             -->
-            
-            
-            
-            <!-- Language -->
-            <TextBlock Grid.Row="8" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+
+
+
+        <!-- Language -->
+        <TextBlock Grid.Row="8" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
                 Jazyk:
-            </TextBlock>
-            <ComboBox Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="1" ItemsSource="{local:EnumBindingSourceExtension enums:Language}" SelectedItem="{Binding Language, UpdateSourceTrigger=PropertyChanged}">
-            </ComboBox>
+        </TextBlock>
+        <ComboBox Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="1" ItemsSource="{local:EnumBindingSourceExtension enums:Language}" SelectedItem="{Binding Language, UpdateSourceTrigger=PropertyChanged}">
+        </ComboBox>
 
-            <!--
+        <!--
             <TextBox Text="{Binding Obligation, UpdateSourceTrigger=PropertyChanged}" Grid.Row="8" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
             -->
 
-            <!-- Button Add -->
+        <!-- Button Add -->
 
-            <Button Command="{Binding CommandAdd}" Grid.Row="9" Grid.Column="2" Content="Přidej"
+        <Button Command="{Binding CommandAdd}" Grid.Row="9" Grid.Column="2" Content="Přidej"
                     HorizontalAlignment="Center" Grid.ColumnSpan="3" Margin="0,20,10,20" MinHeight="60"
                     MinWidth="390" FontSize="24" FontWeight="Normal" Cursor="Hand"/>
 
 
 
-            <!-- Button Smazat -->            
-            <Button x:Name="BtnRemoveGroup" Grid.Row="11" Grid.Column="5" Content="Vymaž"
+        <!-- Button Smazat -->
+        <Button Command="{Binding CommandDeleteSelected}" Grid.Row="11" Grid.Column="5" Content="Vymaž"
                     HorizontalAlignment="Left" Grid.ColumnSpan="1" Margin="0,0,0,0" MinHeight="30"
                     MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"/>
-            
 
 
-            <!-- List View -->
-            <ListView ItemsSource="{Binding Groups}" Grid.Row="2" Grid.Column="5" Grid.RowSpan="9" Margin="0,0,0,20">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding Abbrevation}" Header="Zkratka"></GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Year}" Header="Rok"></GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Semester}" Header="Semestr"></GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding NumberOfStudents}" Header="Studentů"></GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding StudyForm}" Header="Forma studia"></GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding StudyType}" Header="Typ studia"></GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Language}" Header="Jazyk"></GridViewColumn>
+
+        <!-- List View -->
+        <ListView ItemsSource="{Binding Groups}" SelectedItem="{Binding SelectedGroup}" Grid.Row="2" Grid.Column="5" Grid.RowSpan="9" Margin="0,0,0,20"  ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Abbrevation}" Header="Zkratka"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Year}" Header="Rok"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Semester}" Header="Semestr"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding NumberOfStudents}" Header="Studentů"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding StudyForm}" Header="Forma studia"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding StudyType}" Header="Typ studia"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Language}" Header="Jazyk"></GridViewColumn>
 
 
-                    </GridView>
-                </ListView.View>
+                </GridView>
+            </ListView.View>
 
-            </ListView>
+        </ListView>
 
-            <!-- Button Zpet -->
-            
-            <Button x:Name="BtnGroupBack" Grid.Row="11" Grid.Column="1" Content="Zpět"
+        <!-- Button Zpet -->
+
+        <Button x:Name="BtnGroupBack" Grid.Row="11" Grid.Column="1" Content="Zpět"
                     HorizontalAlignment="Left" Grid.ColumnSpan="1" Margin="0,0,0,0" MinHeight="30"
                     MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"
                     Click="BtnGroupBack_Click"/>
-            
 
-            <!-- Button Menu -->
-            
-            <Button x:Name="BtnGroupToMenu" Grid.Row="11" Grid.Column="1" Content="Menu"
+
+        <!-- Button Menu -->
+
+        <Button x:Name="BtnGroupToMenu" Grid.Row="11" Grid.Column="1" Content="Menu"
                     HorizontalAlignment="Right" Grid.ColumnSpan="1" Margin="0,0,0,0" MinHeight="30"
                     MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"
                     Click="BtnGroupToMenu_Click"/>
-           
 
-            <!-- Button Dalsi -->
-            
-            <Button x:Name="BtnGroupToNext" Grid.Row="11" Grid.Column="5" Content="Další"
+
+        <!-- Button Dalsi -->
+
+        <Button x:Name="BtnGroupToNext" Grid.Row="11" Grid.Column="5" Content="Další"
                     HorizontalAlignment="Right" Grid.ColumnSpan="1" Margin="0,0,0,0" MinHeight="30"
                     MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"
                     Click="BtnGroupToNext_Click"/>
-            
 
 
 
@@ -231,7 +230,7 @@
 
 
 
-        </Grid>
 
-    </ScrollViewer>
+    </Grid>
+
 </Window>

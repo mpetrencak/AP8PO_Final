@@ -91,9 +91,9 @@
 
         <!-- List View Employees -->
 
-        
 
-        <ListView ItemsSource="{Binding Employees}" Grid.Row="3" Grid.Column="1" Margin="0,0,10,20">
+
+        <ListView ItemsSource="{Binding Employees}" Grid.Row="3" Grid.Column="1" Margin="0,0,10,20"    ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Header="Jméno"></GridViewColumn>
@@ -113,7 +113,7 @@
 
 
         <!-- List View Groups-->
-        <ListView ItemsSource="{Binding Groups}" Grid.Row="3" Grid.Column="2" Margin="10,0,10,20">
+        <ListView ItemsSource="{Binding Groups}" Grid.Row="3" Grid.Column="2" Margin="10,0,10,20"    ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Abbrevation}" Header="Zkratka"></GridViewColumn>
@@ -131,7 +131,7 @@
         </ListView>
 
         <!-- List View Subjects -->
-        <ListView ItemsSource="{Binding Subjects}" Grid.Row="3" Grid.Column="3" Margin="10,0,0,20">
+        <ListView ItemsSource="{Binding Subjects}" Grid.Row="3" Grid.Column="3" Margin="10,0,0,20"    ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Abbrevation}" Header="Zkratka"></GridViewColumn>

@@ -9,10 +9,33 @@ namespace AP8PO_Final.ViewModels
 {
     public class EmployeeEditViewModel : ViewModelBase
     {
-        MainWindow MainWindow;
+        MainWindow _mainWindow;
         public ObservableCollection<Employee> Employees { get; private set; }
 
+        
         private Employee _selectedEmployee;
+        public Employee SelectedEmployee
+        {
+            get
+            {
+                return _selectedEmployee;
+            }
+            set
+            {
+                _selectedEmployee = value;
+                if(value != null)
+                {
+                    FirstName = value.FirstName;
+                    SecondName = value.SecondName;
+                    WorkEmail = value.WorkEmail;
+                    PersonalEmail = value.PersonalEmail;
+                    PHdStudent = value.PHdStudent;
+                    Obligation = value.Obligation;
+
+                }
+
+            }
+        }
 
         private string _firstName;
         public string FirstName
@@ -74,11 +97,22 @@ namespace AP8PO_Final.ViewModels
         private bool _pHdStudent;
         public bool PHdStudent
         {
-            get { return _pHdStudent; }
-            set { _pHdStudent = value; OnPropertyChange("PHdStudent"); }
+            get
+            {
+                return _pHdStudent;
+            }
+            set
+            {
+                if(value == true)
+                {
+                    Obligation = 0;
+                }
+                _pHdStudent = value;
+                OnPropertyChange("PHdStudent");
+
+            }
 
         }
-
 
         private double _obligation;
         public double Obligation
@@ -95,6 +129,7 @@ namespace AP8PO_Final.ViewModels
 
 
         public RelayCommand CommandAdd { get; set; }
+        public RelayCommand CommandDeleteSelected { get; set; }
 
 
 
@@ -103,8 +138,35 @@ namespace AP8PO_Final.ViewModels
         public EmployeeEditViewModel(MainWindow mainWindow)
         {
             CommandAdd = new RelayCommand(Add, CanAdd);
+            CommandDeleteSelected = new RelayCommand(Delete, CanDelete);
             Employees = new ObservableCollection<Employee>();
-            MainWindow = mainWindow;
+            _mainWindow = mainWindow;
+
+        }
+
+
+        private bool CanDelete()
+        {
+            if(_selectedEmployee == null)
+            {
+                return false;
+            }
+            return true;
+
+        }
+
+        private void Delete(object param)
+        {
+            Employees.Remove(_selectedEmployee);
+            _selectedEmployee = null;
+
+            FirstName = String.Empty;
+            SecondName = String.Empty;
+            WorkEmail = String.Empty;
+            PersonalEmail = String.Empty;
+            PHdStudent = false;
+            Obligation = 0;
+
 
         }
 
@@ -123,7 +185,7 @@ namespace AP8PO_Final.ViewModels
         {
             Employee newEmployee = new Employee(_firstName, _secondName, _fullName, _workEmail, _personalEmail, _pHdStudent, _obligation);
 
-            MainWindow.Employees.Add(newEmployee);
+            _mainWindow.Employees.Add(newEmployee);
             Employees.Add(newEmployee);
 
             _selectedEmployee = newEmployee;

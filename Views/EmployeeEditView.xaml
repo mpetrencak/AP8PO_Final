@@ -9,180 +9,180 @@
         Style="{DynamicResource CustomWindowStyle}"      
         Title="Přidání zaměstnance" Height="800" Width="1200" WindowStartupLocation="CenterScreen" Closing="Window_Closing" SizeToContent="Manual">
 
-    <ScrollViewer HorizontalScrollBarVisibility="Visible">
-        <Grid Margin="5">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
+    
 
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="20"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="20"/>
-            </Grid.RowDefinitions>
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
 
 
-            <!--Menu-->
-            <Menu VerticalAlignment="Top" Grid.ColumnSpan="2">
+        <!--Menu-->
+        <Menu VerticalAlignment="Top" Grid.ColumnSpan="2">
 
-                <!--Theme-->
-                <MenuItem Header="Themes">
-                    <MenuItem  Header="Light" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="0">
-                        <MenuItem.Icon>
-                            <Rectangle Stroke="#FF848484" Fill="#FFE8E8E8" StrokeThickness="2" StrokeLineJoin="Round"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="Colourful Light" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="1">
-                        <MenuItem.Icon>
-                            <Rectangle Stroke="#FF2C7FF5" Fill="#FFE8E8E8" StrokeThickness="2" StrokeLineJoin="Round"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="Dark" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="2">
-                        <MenuItem.Icon>
-                            <Rectangle Stroke="#FF404040" Fill="#FF1B1B1B" StrokeThickness="2" StrokeLineJoin="Round"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="Colourful Dark" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="3">
-                        <MenuItem.Icon>
-                            <Rectangle Stroke="#FF2C7FF5" Fill="#FF1B1B1B" StrokeThickness="2" StrokeLineJoin="Round"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
+            <!--Theme-->
+            <MenuItem Header="Themes">
+                <MenuItem  Header="Light" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="0">
+                    <MenuItem.Icon>
+                        <Rectangle Stroke="#FF848484" Fill="#FFE8E8E8" StrokeThickness="2" StrokeLineJoin="Round"/>
+                    </MenuItem.Icon>
                 </MenuItem>
-            </Menu>
+                <MenuItem Header="Colourful Light" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="1">
+                    <MenuItem.Icon>
+                        <Rectangle Stroke="#FF2C7FF5" Fill="#FFE8E8E8" StrokeThickness="2" StrokeLineJoin="Round"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Dark" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="2">
+                    <MenuItem.Icon>
+                        <Rectangle Stroke="#FF404040" Fill="#FF1B1B1B" StrokeThickness="2" StrokeLineJoin="Round"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Colourful Dark" Template="{DynamicResource SingleDropDownMenuItem}" Click="MenuItemTheme_Click" Uid="3">
+                    <MenuItem.Icon>
+                        <Rectangle Stroke="#FF2C7FF5" Fill="#FF1B1B1B" StrokeThickness="2" StrokeLineJoin="Round"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
 
 
-            <!-- Header -->
-            <TextBlock Grid.Row="1" Grid.Column="1" FontSize="25" HorizontalAlignment="Center"
+        <!-- Header -->
+        <TextBlock Grid.Row="1" Grid.Column="1" FontSize="25" HorizontalAlignment="Center"
                        Grid.ColumnSpan="5" Margin="0,0,0,20">
                 Přidejte zaměstnance!
-            </TextBlock>
+        </TextBlock>
 
 
-            <!-- First name -->
-            <TextBlock Grid.Row="2" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+        <!-- First name -->
+        <TextBlock Grid.Row="2" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
                 Jméno:
-            </TextBlock>
+        </TextBlock>
 
-            <TextBox Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="2" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
+        <TextBox Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="2" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
 
 
-            <!-- Second name -->
-            <TextBlock Grid.Row="3" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+        <!-- Second name -->
+        <TextBlock Grid.Row="3" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
                 Příjmení :
-            </TextBlock>
+        </TextBlock>
 
-            <TextBox Text="{Binding SecondName,UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
+        <TextBox Text="{Binding SecondName,UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
 
-            <!-- full Name -->
-            <TextBlock Grid.Row="4" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+        <!-- full Name -->
+        <TextBlock Grid.Row="4" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
                 Celé jméno:
-            </TextBlock>
+        </TextBlock>
 
-            <TextBox Text="{Binding FullName,UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
+        <TextBox Text="{Binding FullName,UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
 
-            <!-- Work mail -->
-            <TextBlock Grid.Row="5" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+        <!-- Work mail -->
+        <TextBlock Grid.Row="5" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
                 Pracovní email:
-            </TextBlock>
+        </TextBlock>
 
-            <TextBox Text="{Binding WorkEmail,UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
+        <TextBox Text="{Binding WorkEmail,UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
 
-            <!-- Personal mail -->
-            <TextBlock Grid.Row="6" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+        <!-- Personal mail -->
+        <TextBlock Grid.Row="6" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
                 Osobní email:
-            </TextBlock>
+        </TextBlock>
 
-            <TextBox Text="{Binding PersonalEmail,UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
+        <TextBox Text="{Binding PersonalEmail,UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
 
-            <!-- PHd Student -->
-            <TextBlock Grid.Row="7" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+        <!-- PHd Student -->
+        <TextBlock Grid.Row="7" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
                 Doktorand:
-            </TextBlock>
+        </TextBlock>
 
-            <CheckBox IsChecked="{Binding PHdStudent}" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="195,16,0,17"/>
+        <CheckBox IsChecked="{Binding PHdStudent}" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="195,16,0,17"/>
 
-            <!-- Uvazek -->
-            <TextBlock Grid.Row="8" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
+        <!-- Uvazek -->
+        <TextBlock Grid.Row="8" Grid.Column="1" FontSize="25" HorizontalAlignment="Left"
                        Grid.ColumnSpan="1" Margin="0,10,30,10">
                 Úvazek:
-            </TextBlock>
+        </TextBlock>
 
-            <TextBox Text="{Binding Obligation, UpdateSourceTrigger=PropertyChanged}" Grid.Row="8" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
+        <TextBox Text="{Binding Obligation, UpdateSourceTrigger=PropertyChanged}" Grid.Row="8" Grid.Column="2" FontSize="25" MinWidth="180" Margin="0,10,20,10" Width="370" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch"  />
 
 
-            <!-- Button Add -->
-            <Button Command="{Binding CommandAdd}" Grid.Row="9" Grid.Column="2" Content="Přidej"
+        <!-- Button Add -->
+        <Button Command="{Binding CommandAdd}" Grid.Row="9" Grid.Column="2" Content="Přidej"
                     HorizontalAlignment="Center" Grid.ColumnSpan="3" Margin="0,20,10,20" MinHeight="60"
                     MinWidth="390" FontSize="24" FontWeight="Normal" Cursor="Hand"/>
 
-            <!-- Button Smazat -->
-            <Button x:Name="BtnRemoveEmployee" Grid.Row="11" Grid.Column="5" Content="Vymaž"
+        <!-- Button Smazat -->
+        <Button Command="{Binding CommandDeleteSelected}" Grid.Row="11" Grid.Column="5" Content="Vymaž"
                     HorizontalAlignment="Left" Grid.ColumnSpan="1" Margin="0,0,0,0" MinHeight="30"
                     MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"
-                    Click="BtnEmployeeToNext_Click"/>
-      
+                    />
 
 
-            <!-- List View -->
-            <ListView ItemsSource="{Binding Employees}" Grid.Row="2" Grid.Column="5" Grid.RowSpan="9" Margin="0,0,0,20">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Header="Jméno"></GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding SecondName}" Header="Příjmení"></GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding FullName}" Header="Celé jméno"></GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding WorkEmail}" Header="Pracovní email"></GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding PersonalEmail}" Header="Osobní email"></GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding PHdStudent}" Header="Doktorand"></GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Obligation}" Header="Úvazek"></GridViewColumn>
+
+        <!-- List View -->
+        <ListView ItemsSource="{Binding Employees}" SelectedItem="{Binding SelectedEmployee}" Grid.Row="2" Grid.Column="5" Grid.RowSpan="9" Margin="0,0,0,20" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Header="Jméno"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding SecondName}" Header="Příjmení"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding FullName}" Header="Celé jméno"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding WorkEmail}" Header="Pracovní email"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding PersonalEmail}" Header="Osobní email"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding PHdStudent}" Header="Doktorand"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Obligation}" Header="Úvazek"></GridViewColumn>
 
 
-                    </GridView>
-                </ListView.View>
+                </GridView>
+            </ListView.View>
 
-            </ListView>
+        </ListView>
 
-          
-            <!-- Button Zpet -->     
-            <Button x:Name="BtnEmployeeBack" Grid.Row="11" Grid.Column="1" Content="Zpět"
+
+        <!-- Button Zpet -->
+        <Button x:Name="BtnEmployeeBack" Grid.Row="11" Grid.Column="1" Content="Zpět"
                     HorizontalAlignment="Left" Grid.ColumnSpan="1" Margin="0,0,0,0" MinHeight="30"
                     MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"
                     Click="BtnEmployeeToMenu_Click"/>
-         
 
-            <!-- Button Menu -->         
-            <Button x:Name="BtnEmployeeToMenu" Grid.Row="11" Grid.Column="1" Content="Menu"
+
+        <!-- Button Menu -->
+        <Button x:Name="BtnEmployeeToMenu" Grid.Row="11" Grid.Column="1" Content="Menu"
                     HorizontalAlignment="Right" Grid.ColumnSpan="1" Margin="0,0,0,0" MinHeight="30"
                     MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"
                     Click="BtnEmployeeToMenu_Click"/>
-   
-            <!-- Button Dalsi -->
-            <Button x:Name="BtnEmployeeToNext" Grid.Row="11" Grid.Column="5" Content="Další"
+
+        <!-- Button Dalsi -->
+        <Button x:Name="BtnEmployeeToNext" Grid.Row="11" Grid.Column="5" Content="Další"
                     HorizontalAlignment="Right" Grid.ColumnSpan="1" Margin="0,0,0,0" MinHeight="30"
                     MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"
                     Click="BtnEmployeeToNext_Click"/>
-   
 
 
 
@@ -199,7 +199,9 @@
 
 
 
-        </Grid>
 
-    </ScrollViewer>
+    </Grid>
+
+
+
 </Window>
