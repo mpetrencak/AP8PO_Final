@@ -109,7 +109,7 @@
             </ListView.View>
 
         </ListView>
-        
+
 
 
         <!-- List View Groups-->
@@ -142,6 +142,7 @@
                     <GridViewColumn DisplayMemberBinding="{Binding CourseCompletionType}" Header="Zakončení"></GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Language}" Header="Jazyk"></GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding SizeOfGroup}" Header="Velikost skupiny"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding GroupsString}" Header="Obor"></GridViewColumn>
 
 
                 </GridView>
@@ -149,40 +150,25 @@
 
         </ListView>
 
-        <!-- Button Delete Employee -->
-        <Button x:Name="BtnRemoveEmployee" Grid.Row="4" Grid.Column="1" Content="Vymaž"
-                    HorizontalAlignment="Left" Grid.ColumnSpan="1" Margin="0,0,0,0" MinHeight="30"
-                    MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"
-                    />
 
-        <!-- Button Add Employee -->
-        <Button x:Name="BtnAddEmployee" Grid.Row="4" Grid.Column="1" Content="Uprav"
+        <!-- Button Edit Employee -->
+        <Button x:Name="BtnEditEmployee" Grid.Row="4" Grid.Column="1" Content="Uprav"
                     HorizontalAlignment="Right" Grid.ColumnSpan="1" Margin="0,0,10,0" MinHeight="30"
-                    MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"
+                    MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand" Click="BtnEditEmployee_Click"
                     />
 
-        <!-- Button Delete Employee -->
-        <Button x:Name="BtnRemoveGroup" Grid.Row="4" Grid.Column="2" Content="Vymaž"
-                    HorizontalAlignment="Left" Grid.ColumnSpan="1" Margin="10,0,0,0" MinHeight="30"
-                    MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"
-                    />
 
-        <!-- Button Add Employee -->
-        <Button x:Name="BtnAddGroup" Grid.Row="4" Grid.Column="2" Content="Uprav"
+        <!-- Button Edit Employee -->
+        <Button x:Name="BtnEditGroup" Grid.Row="4" Grid.Column="2" Content="Uprav"
                     HorizontalAlignment="Right" Grid.ColumnSpan="1" Margin="0,0,10,0" MinHeight="30"
-                    MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"
+                    MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand" Click="BtnEditGroup_Click"
                     />
 
-        <!-- Button Delete Employee -->
-        <Button x:Name="BtnRemoveSubject" Grid.Row="4" Grid.Column="3" Content="Vymaž"
-                    HorizontalAlignment="Left" Grid.ColumnSpan="1" Margin="10,0,0,0" MinHeight="30"
-                    MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"
-                    />
-
-        <!-- Button Add Employee -->
-        <Button x:Name="BtnAddSubject" Grid.Row="4" Grid.Column="3" Content="Uprav"
-                    HorizontalAlignment="Right" Grid.ColumnSpan="1" Margin="0,0,0,0" MinHeight="30"
-                    MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"/>
+        <!-- Button Edit Employee -->
+        <Button x:Name="BtnEditSubject" Grid.Row="4" Grid.Column="3" Content="Uprav"
+                    HorizontalAlignment="Right" Grid.ColumnSpan="1" Margin="0,0,10,0" MinHeight="30"
+                    MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"  Click="BtnEditSubject_Click"
+                />
 
 
 

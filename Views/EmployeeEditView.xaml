@@ -169,7 +169,7 @@
         <Button x:Name="BtnEmployeeBack" Grid.Row="11" Grid.Column="1" Content="Zpět"
                     HorizontalAlignment="Left" Grid.ColumnSpan="1" Margin="0,0,0,0" MinHeight="30"
                     MinWidth="100" FontSize="24" FontWeight="Normal" Cursor="Hand"
-                    Click="BtnEmployeeToMenu_Click"/>
+                    Click="BtnEmployeeBack_Click"/>
 
 
         <!-- Button Menu -->

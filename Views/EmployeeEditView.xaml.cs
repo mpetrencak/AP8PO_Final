@@ -21,21 +21,23 @@ namespace AP8PO_Final.Views
     /// </summary>
     public partial class EmployeeEditView : Window
     {
-        MainWindow MainWindow;
+        MainWindow _mainWindow;
+        Window _parent;
 
 
         public GroupEditView GroupEditView { get; set; }
-        
-        
-        //GroupEditViewModel GroupEditViewModel;
-        //private List<Employee> employees = new List<Employee>();
 
 
 
-        public EmployeeEditView(MainWindow mainWindow)
+        /// <summary>
+        /// </summary>
+        /// <param name="mainWindow"></param>
+        public EmployeeEditView(Window parent,MainWindow mainWindow)
         {
             InitializeComponent();
-            MainWindow = mainWindow;
+            _mainWindow = mainWindow;
+            _parent = parent;
+            
 
 
         }
@@ -45,11 +47,11 @@ namespace AP8PO_Final.Views
         {
             if(this.IsActive)
             {
-                MainWindow.Show();
+                _mainWindow.Show();
             }
             else
             {
-                GroupEditView.Close();
+                //GroupEditView.Close();
             }
 
 
@@ -69,7 +71,7 @@ namespace AP8PO_Final.Views
             if(MessageBox.Show("Opravdu se chcete vrátit do menu?","Vrátit",MessageBoxButton.YesNo,MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 Hide();
-                MainWindow.Show();
+                _mainWindow.Show();
             }
             else
             {
@@ -80,10 +82,11 @@ namespace AP8PO_Final.Views
 
         private void BtnEmployeeToNext_Click(object sender, RoutedEventArgs e)
         {
+            _mainWindow.GroupEditViewModel = new GroupEditViewModel(_mainWindow);
+            _mainWindow.GroupEditView = new GroupEditView(this, _mainWindow);
+            _mainWindow.GroupEditView.DataContext = _mainWindow.GroupEditViewModel;
+            _mainWindow.GroupEditView.Show();
 
-
-
-            GroupEditView.Show();
             Hide();
             
 
@@ -99,6 +102,13 @@ namespace AP8PO_Final.Views
                 case 3: ThemesController.SetTheme(ThemesController.ThemeTypes.ColourfulDark); break;
             }
             e.Handled = true;
+
+        }
+
+        private void BtnEmployeeBack_Click(object sender, RoutedEventArgs e)
+        {
+            _parent.Show();
+            Hide();
 
         }
     }

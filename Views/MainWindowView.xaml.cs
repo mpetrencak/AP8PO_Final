@@ -32,22 +32,27 @@ namespace AP8PO_Final
         public ObservableCollection<Group> Groups { get; set; }
         public ObservableCollection<Subject> Subjects { get; set; }
         public ObservableCollection<WorkLabel> WorkLabels { get; set; }
+        public InputParameters InputParameters { get; set; }
 
 
 
         //Views and Viewmodels
 
-        EmployeeEditView EmployeeEditView;
-        public EmployeeEditViewModel EmployeeEditViewModel { get; private set; }
-       
-        GroupEditView GroupEditView;
-        public GroupEditViewModel GroupEditViewModel { get; private set; }
+        public EmployeeEditView EmployeeEditView { get; set; }
+        public EmployeeEditViewModel EmployeeEditViewModel { get; set; }
 
-        SubjectEditView SubjectEditView;
-        public SubjectEditViewModel SubjectEditViewModel { get; private set; }
+       
+        public GroupEditView GroupEditView { get; set; }
+        public GroupEditViewModel GroupEditViewModel { get;set; }
+
+
+        public SubjectEditView SubjectEditView { get; set; }
+        public SubjectEditViewModel SubjectEditViewModel { get; set; }
+
 
         public InputDataView InputDataView { get; set; }
         public InputDataViewModel InputDataViewModel { get; set; }
+
 
         public WorkLabelEditView WorkLabelEditView { get; set; }
         public WorkLabelEditViewModel WorkLabelEditViewModel { get; set; }
@@ -60,44 +65,29 @@ namespace AP8PO_Final
         {
             InitializeComponent();
 
-            //inicializating objects
             //Models
             Employees = new ObservableCollection<Employee>();
             Groups = new ObservableCollection<Group>();
             Subjects = new ObservableCollection<Subject>();
             WorkLabels = new ObservableCollection<WorkLabel>();
+            InputParameters = new InputParameters();
             
-            //ViewModels
-            EmployeeEditViewModel = new EmployeeEditViewModel(this);
-            GroupEditViewModel = new GroupEditViewModel(this);
-            SubjectEditViewModel = new SubjectEditViewModel(this);
-            //WorkLabelEditViewModel = new WorkLabelEditViewModel(this); 
-
-            //Views
-            InputDataView = new InputDataView(this);
-            EmployeeEditView = new EmployeeEditView(this);
-            GroupEditView = new GroupEditView(EmployeeEditView, this);
-            SubjectEditView = new SubjectEditView(GroupEditView, this);
-            WorkLabelEditView = new WorkLabelEditView(InputDataView, this);
-
-            //Connections 
-            InputDataView.DataContext = InputDataViewModel;
-            EmployeeEditView.DataContext = EmployeeEditViewModel;
-            GroupEditView.DataContext = GroupEditViewModel;
-            SubjectEditView.DataContext = SubjectEditViewModel;
-            //WorkLabelEditView.DataContext = WorkLabelEditViewModel;
-            
-
-            //setting child window
-            EmployeeEditView.GroupEditView = GroupEditView;
-            GroupEditView.SubjectEditView = SubjectEditView;
 
         }
 
+
+        /// <summary>
+        /// Opening employee edit window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnStart_Click(object sender, RoutedEventArgs e)
-        {       
-           
+        {
+            EmployeeEditViewModel = new EmployeeEditViewModel(this);
+            EmployeeEditView = new EmployeeEditView(this,this);
+            EmployeeEditView.DataContext = EmployeeEditViewModel;
             EmployeeEditView.Show();
+
             Hide();          
 
 
@@ -105,11 +95,12 @@ namespace AP8PO_Final
 
         private void BtnImport_Click(object sender, RoutedEventArgs e)
         {
+
             InputDataViewModel = new InputDataViewModel(this);
+            InputDataView = new InputDataView(this);
             InputDataView.DataContext = InputDataViewModel;
-
-
             InputDataView.Show();
+
             Hide();
 
         }

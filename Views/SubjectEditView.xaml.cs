@@ -25,46 +25,19 @@ namespace AP8PO_Final.Views
         MainWindow _mainWindow;
         Window _parent;
 
-        EmployeeEditViewModel _employeeEditViewModel;
-        GroupEditViewModel _groupEditViewModel;
-        SubjectEditViewModel _subjectEditViewModel;
-        InputParameters _inputParameters;
-
+        //selected groups from UI
         ObservableCollection<Group> _groups;
 
 
 
-
-
-        //child
-        InputDataView _inputDataView;
-
-        /*
-        public SubjectEditView(Window _parent, _mainWindow mainWindow, EmployeeEditViewModel employeeEditViewModel, GroupEditViewModel groupEditViewModel,SubjectEditViewModel subjectEditViewModel)
-        {
-            InitializeComponent();
-            _mainWindow = mainWindow;
-            this._parent= _parent;
-
-            EmployeeEditViewModel = employeeEditViewModel;
-            GroupEditViewModel = groupEditViewModel;
-            SubjectEditViewModel = subjectEditViewModel;
-        }
-
-        */
         public SubjectEditView(Window parent, MainWindow mainWindow)
         {
             InitializeComponent();
             _mainWindow = mainWindow;
-            _employeeEditViewModel = _mainWindow.EmployeeEditViewModel;
-            _groupEditViewModel = _mainWindow.GroupEditViewModel;
-            _subjectEditViewModel = _mainWindow.SubjectEditViewModel;
-
-            _subjectEditViewModel.Groups = _mainWindow.Groups;
-
             _parent = parent;
 
-            _inputDataView = _mainWindow.InputDataView;
+
+
 
         }
         
@@ -84,17 +57,13 @@ namespace AP8PO_Final.Views
         private void BtnSubjectToNext_Click(object sender, RoutedEventArgs e)
         {
 
-            _inputParameters = new InputParameters(_employeeEditViewModel.Employees, _groupEditViewModel.Groups, _subjectEditViewModel.Subjects);
-            _mainWindow.InputDataViewModel = new InputDataViewModel(_mainWindow, _inputParameters);
+            _mainWindow.InputParameters = new InputParameters(_mainWindow.Employees, _mainWindow.Groups, _mainWindow.Subjects);          
+
+            _mainWindow.InputDataViewModel = new InputDataViewModel(_mainWindow, _mainWindow.InputParameters);
+            _mainWindow.InputDataView = new InputDataView(_mainWindow);
             _mainWindow.InputDataView.DataContext = _mainWindow.InputDataViewModel;
-            
-
-            _inputDataView = new InputDataView(_mainWindow);
-            _inputDataView.DataContext = _mainWindow.InputDataViewModel;
-            _inputDataView.Show();
-
-
-                
+            _mainWindow.InputDataView.Show();        
+         
             Hide();
 
         }
@@ -139,13 +108,13 @@ namespace AP8PO_Final.Views
 
         private void LstBoxGroups_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            System.Windows.Controls.ListBox _sender = (System.Windows.Controls.ListBox)sender;
+            ListBox _sender = (ListBox)sender;
 
-            var v = _sender.SelectedItems;
+            var selectedItems = _sender.SelectedItems;
 
             _groups = new ObservableCollection<Group>();
              
-            foreach(var item in v)
+            foreach(var item in selectedItems)
             {
                 _groups.Add((Group)item);
             }
@@ -154,9 +123,13 @@ namespace AP8PO_Final.Views
 
         private void BtnAddSubject_Click(object sender, RoutedEventArgs e)
         {
-            _subjectEditViewModel.SelectedGroups = _groups;
+            _mainWindow.SubjectEditViewModel.SelectedGroups = _groups;
 
         }
 
+        private void BtnSubjectBack_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

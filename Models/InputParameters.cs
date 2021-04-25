@@ -20,9 +20,9 @@ namespace AP8PO_Final.Models
 
         public InputParameters()
         {
-            Employees = null;
-            Groups = null;
-            Subjects = null;
+            Employees = new ObservableCollection<Employee>();
+            Groups = new ObservableCollection<Group>();
+            Subjects = new ObservableCollection<Subject>();
         }
 
         public InputParameters(ObservableCollection<Employee> employees, ObservableCollection<Group> groups, ObservableCollection<Subject> subjects)

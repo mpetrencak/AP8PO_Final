@@ -9,7 +9,7 @@ namespace AP8PO_Final.ViewModels
 {
     public class GroupEditViewModel : ViewModelBase
     {
-        MainWindow MainWindow;
+        MainWindow _mainWindow;
         public ObservableCollection<Group> Groups { get; private set; }
 
         private Group _selectedGroup;
@@ -165,10 +165,10 @@ namespace AP8PO_Final.ViewModels
             
             CommandAdd = new RelayCommand(Add, CanAdd);
             CommandDeleteSelected = new RelayCommand(Delete, CanDelete);
-            Groups = new ObservableCollection<Group>();
-            MainWindow = mainWindow;
+            _mainWindow = mainWindow;
+            Groups = new ObservableCollection<Group>(_mainWindow.Groups);
 
-            
+
 
 
         }
@@ -188,7 +188,13 @@ namespace AP8PO_Final.ViewModels
         private void Delete(object param)
         {
             Groups.Remove(_selectedGroup);
+
+            _mainWindow.Groups.Remove(_selectedGroup);
+            _mainWindow.InputParameters.Groups.Remove(_selectedGroup);
+
             _selectedGroup = null;
+
+
 
             Abbrevation = String.Empty;
             Year = 0;
@@ -197,6 +203,8 @@ namespace AP8PO_Final.ViewModels
             StudyForm = StudyForm.FullTime;
             StudyType = StudyType.Bc;
             Language = Language.CZ;
+
+
 
 
         }
@@ -229,11 +237,14 @@ namespace AP8PO_Final.ViewModels
         private void Add(object param)
         {
             Group newGroup = new Group(_abbrevation,_year,_semester,_numberOfStudents,_studyForm,_studyType,_language);
-
             Groups.Add(newGroup);
-            MainWindow.Groups.Add(newGroup);
-
             _selectedGroup = newGroup;
+
+
+            _mainWindow.Groups.Add(newGroup);
+            _mainWindow.InputParameters.Groups.Add(newGroup);
+
+
  
 
 

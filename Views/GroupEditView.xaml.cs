@@ -21,8 +21,8 @@ namespace AP8PO_Final.Views
     /// </summary>
     public partial class GroupEditView : Window
     {
-        MainWindow MainWindow;
-        Window parent;
+        MainWindow _mainWindow;
+        Window _parent;
 
         public SubjectEditView SubjectEditView { get; set; }
         //SubjectEditViewModel SubjectEditViewModel;
@@ -31,8 +31,8 @@ namespace AP8PO_Final.Views
         {
 
             InitializeComponent();
-            this.parent = parent;
-            MainWindow = mainWindow;
+            _parent = parent;
+            _mainWindow = mainWindow;
         }
 
 
@@ -54,7 +54,7 @@ namespace AP8PO_Final.Views
         {
 
             Hide();
-            parent.Show();
+            _parent.Show();
 
 
 
@@ -65,7 +65,7 @@ namespace AP8PO_Final.Views
             if (MessageBox.Show("Opravdu se chcete vrátit do menu?", "Vrátit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 Hide();
-                MainWindow.Show();
+                _mainWindow.Show();
             }
             else
             {
@@ -78,11 +78,11 @@ namespace AP8PO_Final.Views
         {
             if (this.IsActive)
             {
-                MainWindow.Show();
+                _mainWindow.Show();
             }
             else
             {
-                SubjectEditView.Close();
+                //SubjectEditView.Close();
             }
 
 
@@ -96,8 +96,12 @@ namespace AP8PO_Final.Views
 
         private void BtnGroupToNext_Click(object sender, RoutedEventArgs e)
         {
+            _mainWindow.SubjectEditViewModel = new SubjectEditViewModel(_mainWindow);
+            _mainWindow.SubjectEditView = new SubjectEditView(this, _mainWindow);
+            _mainWindow.SubjectEditView.DataContext = _mainWindow.SubjectEditViewModel;
+            _mainWindow.SubjectEditView.Show();
 
-            SubjectEditView.Show();
+
             Hide();
 
 

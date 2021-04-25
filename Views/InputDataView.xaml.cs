@@ -64,5 +64,38 @@ namespace AP8PO_Final.Views
 
 
         }
+
+        private void BtnEditEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.EmployeeEditView = new EmployeeEditView(this,_mainWindow);
+            _mainWindow.EmployeeEditViewModel = new EmployeeEditViewModel(_mainWindow);
+            _mainWindow.EmployeeEditView.DataContext = _mainWindow.EmployeeEditViewModel;
+            _mainWindow.EmployeeEditView.Show();
+
+            Hide();
+        }
+
+        private void BtnEditGroup_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.GroupEditView = new GroupEditView(this,_mainWindow);
+            _mainWindow.GroupEditViewModel = new GroupEditViewModel(_mainWindow);
+            _mainWindow.GroupEditView.DataContext = _mainWindow.GroupEditViewModel;
+            _mainWindow.GroupEditView.Show();
+
+            Hide();
+
+
+        }
+
+        private void BtnEditSubject_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.SubjectEditView = new SubjectEditView(this, _mainWindow);
+            _mainWindow.SubjectEditViewModel = new SubjectEditViewModel(_mainWindow);
+            _mainWindow.SubjectEditView.DataContext = _mainWindow.SubjectEditViewModel;
+            _mainWindow.SubjectEditView.Show();
+
+            Hide();
+
+        }
     }
 }

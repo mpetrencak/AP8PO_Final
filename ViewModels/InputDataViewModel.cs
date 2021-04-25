@@ -69,24 +69,9 @@ namespace AP8PO_Final.ViewModels
 
         //worklabels
         private ObservableCollection<WorkLabel> _workLabels;
-        /// <summary>
-        /// List of ObservableCollections, where obsC is list of labels per subject
-        /// </summary>
-        private List<ObservableCollection<WorkLabel>> _allWorklabels;
-        /// <summary>
-        /// List of ObservableCollections, where obsC is list of labels per subject
-        /// </summary>
-        public List<ObservableCollection<WorkLabel>> AllWorklabels
-        {
-            get
-            {
-                return _allWorklabels;
-            }
-            set
-            {
-                _allWorklabels = value;
-            }
-        }
+
+
+
 
         public RelayCommand CommandSave { get; set; }
         public RelayCommand CommandOpen { get; set; }
@@ -100,14 +85,11 @@ namespace AP8PO_Final.ViewModels
         public InputDataViewModel(MainWindow mainWindow)
         {
             _mainWindow = mainWindow;
-            Employees = new ObservableCollection<Employee>();
-            //Employees = mainWindow.Employees;
 
-            Groups = new ObservableCollection<Group>();
-            //Groups = mainWindow.Groups;
+            Employees = new ObservableCollection<Employee>(_mainWindow.Employees);
+            Groups = new ObservableCollection<Group>(_mainWindow.Groups);
+            Subjects = new ObservableCollection<Subject>(_mainWindow.Subjects);
 
-            Subjects = new ObservableCollection<Subject>();
-           // Subjects = mainWindow.Subjects;
 
             CommandSave = new RelayCommand(Save, CanSave);
             CommandOpen = new RelayCommand(Open, CanOpen);
@@ -125,22 +107,20 @@ namespace AP8PO_Final.ViewModels
             _mainWindow = mainWindow;
 
             Employees = new ObservableCollection<Employee>(inputParameters.Employees);
-            //Employees = inputParameters.Employees;
-
             Groups = new ObservableCollection<Group>(inputParameters.Groups);
-            //Groups = inputParameters.Groups;
-
             Subjects = new ObservableCollection<Subject>(inputParameters.Subjects);
-            //Subjects = inputParameters.Subjects;
 
             CommandSave = new RelayCommand(Save, CanSave);
             CommandOpen = new RelayCommand(Open, CanOpen);
             CommandGenerate = new RelayCommand(Generate, CanGenerate);
 
-
-
-
         }
+
+
+
+
+
+
 
         private bool CanGenerate()
         {
@@ -247,11 +227,17 @@ namespace AP8PO_Final.ViewModels
             _inputParameters = new InputParameters();
             _inputParameters = DeserializeToObject<InputParameters>(path);
 
+            _mainWindow.InputParameters = _inputParameters;
 
 
-            Employees = _inputParameters.Employees;
-            Groups = _inputParameters.Groups;
-            Subjects = _inputParameters.Subjects;       
+
+            Employees = new ObservableCollection<Employee>(_inputParameters.Employees);
+            Groups = new ObservableCollection<Group>(_inputParameters.Groups);
+            Subjects = new ObservableCollection<Subject>(_inputParameters.Subjects);
+
+            _mainWindow.Employees = new ObservableCollection<Employee>(_inputParameters.Employees);
+            _mainWindow.Groups = new ObservableCollection<Group>(_inputParameters.Groups);
+            _mainWindow.Subjects = new ObservableCollection<Subject>(_inputParameters.Subjects);
             
 
 

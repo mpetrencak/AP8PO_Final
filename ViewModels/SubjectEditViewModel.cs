@@ -9,7 +9,7 @@ namespace AP8PO_Final.ViewModels
 {
     public class SubjectEditViewModel :ViewModelBase
     {
-        MainWindow MainWindow;
+        MainWindow _mainWindow;
 
         public ObservableCollection<Subject> Subjects { get; private set; }
 
@@ -186,7 +186,7 @@ namespace AP8PO_Final.ViewModels
             set 
             {
                 _groups = value;
-                OnPropertyChange("Groups");
+                //OnPropertyChange("Groups");
             }
         }
 
@@ -208,8 +208,11 @@ namespace AP8PO_Final.ViewModels
             CommandDeleteSelected = new RelayCommand(Delete, CanDelete);
             CommandAdd = new RelayCommand(Add, CanAdd);
             CommandListBoxChange = new RelayCommand(Change, CanChange);
-            Subjects = new ObservableCollection<Subject>();
-            MainWindow = mainWindow;
+
+            _mainWindow = mainWindow;
+            Subjects = new ObservableCollection<Subject>(_mainWindow.Subjects);
+            Groups = new ObservableCollection<Group>(_mainWindow.Groups);
+
 
 
 
@@ -231,6 +234,9 @@ namespace AP8PO_Final.ViewModels
         private void Delete(object param)
         {
             Subjects.Remove(_selectedSubject);
+
+            _mainWindow.Subjects.Remove(_selectedSubject);
+            _mainWindow.InputParameters.Subjects.Remove(_selectedSubject);
             _selectedSubject = null;
 
             Abbrevation = String.Empty;
@@ -280,9 +286,13 @@ namespace AP8PO_Final.ViewModels
 
 
             Subject newSubject = new Subject(_abbrevation, _weeks, _lectureHours, _exerciseHours, _semminarHours, _courseCompletionType, _language, _sizeOfGroup, SelectedGroups);
-
-            MainWindow.Subjects.Add(newSubject);
             Subjects.Add(newSubject);
+            _selectedSubject = newSubject;
+
+
+            _mainWindow.Subjects.Add(newSubject);
+            _mainWindow.InputParameters.Subjects.Add(newSubject);
+
 
 
 

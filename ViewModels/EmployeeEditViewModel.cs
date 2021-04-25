@@ -10,7 +10,7 @@ namespace AP8PO_Final.ViewModels
     public class EmployeeEditViewModel : ViewModelBase
     {
         MainWindow _mainWindow;
-        public ObservableCollection<Employee> Employees { get; private set; }
+        public ObservableCollection<Employee> Employees { get; set; }
 
         
         private Employee _selectedEmployee;
@@ -128,6 +128,12 @@ namespace AP8PO_Final.ViewModels
         }
 
 
+
+
+
+
+
+
         public RelayCommand CommandAdd { get; set; }
         public RelayCommand CommandDeleteSelected { get; set; }
 
@@ -135,16 +141,40 @@ namespace AP8PO_Final.ViewModels
 
 
 
+        /// <summary>
+        /// Constructon
+        /// </summary>
+        /// <param name="mainWindow"></param>
         public EmployeeEditViewModel(MainWindow mainWindow)
         {
             CommandAdd = new RelayCommand(Add, CanAdd);
             CommandDeleteSelected = new RelayCommand(Delete, CanDelete);
-            Employees = new ObservableCollection<Employee>();
             _mainWindow = mainWindow;
+            Employees = new ObservableCollection<Employee>(_mainWindow.Employees);
+
+        }
+
+        public EmployeeEditViewModel()
+        {
+
+
 
         }
 
 
+
+
+
+
+
+
+
+
+
+        /// <summary>
+        /// If returns true, button Delete can be clicked
+        /// </summary>
+        /// <returns>true if selectedEmployee != null </returns>
         private bool CanDelete()
         {
             if(_selectedEmployee == null)
@@ -155,9 +185,17 @@ namespace AP8PO_Final.ViewModels
 
         }
 
+        /// <summary>
+        /// Delete command for deleting selected Employee
+        /// </summary>
+        /// <param name="param"></param>
         private void Delete(object param)
         {
             Employees.Remove(_selectedEmployee);
+
+            _mainWindow.Employees.Remove(_selectedEmployee);
+            _mainWindow.InputParameters.Employees.Remove(_selectedEmployee);
+
             _selectedEmployee = null;
 
             FirstName = String.Empty;
@@ -170,6 +208,12 @@ namespace AP8PO_Final.ViewModels
 
         }
 
+
+
+        /// <summary>
+        /// If returns true. button Add can be clicked
+        /// </summary>
+        /// <returns>true if firstName secondName workEmail personaEmail are not null </returns>
         private bool CanAdd()
         {
             if(String.IsNullOrWhiteSpace(_firstName) == false && String.IsNullOrWhiteSpace(_secondName) == false &&
@@ -181,14 +225,22 @@ namespace AP8PO_Final.ViewModels
 
         }
 
+        /// <summary>
+        /// Command for adding Employee to ObservableCollection 
+        /// </summary>
+        /// <param name="param"></param>
         private void Add(object param)
         {
             Employee newEmployee = new Employee(_firstName, _secondName, _fullName, _workEmail, _personalEmail, _pHdStudent, _obligation);
+            Employees.Add(newEmployee);
+            _selectedEmployee = newEmployee;
+
 
             _mainWindow.Employees.Add(newEmployee);
-            Employees.Add(newEmployee);
+            _mainWindow.InputParameters.Employees.Add(newEmployee);
 
-            _selectedEmployee = newEmployee;
+
+
             
 
 
