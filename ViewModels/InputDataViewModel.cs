@@ -187,9 +187,13 @@ namespace AP8PO_Final.ViewModels
             }
 
 
-            _mainWindow.WorkLabels = _workLabels;
+            _mainWindow.WorkLabels = new ObservableCollection<WorkLabel>(_workLabels);
             
             _mainWindow.WorkLabelEditViewModel.WorkLabels = new ObservableCollection<WorkLabel>(_workLabels);
+            _mainWindow.WorkLabelEditViewModel.Employees = new ObservableCollection<Employee>(_employees);
+            _mainWindow.WorkLabelEditViewModel.Employees.Add(new Employee());
+            _mainWindow.WorkLabelEditViewModel.Subjects = new ObservableCollection<Subject>(_subjects);
+            
 
 
 

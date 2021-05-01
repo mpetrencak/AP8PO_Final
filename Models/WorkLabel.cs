@@ -177,6 +177,21 @@ namespace AP8PO_Final.Models
 
         }
 
+        public WorkLabel(WorkLabel workLabel, Employee employee)
+        {
+            Name = workLabel.Name;
+            Employee = employee;
+            Subject = workLabel.Subject;
+            LabelTypes = workLabel.LabelTypes;
+            NumberOfStudents = workLabel.NumberOfStudents;
+            NumberOfHours = workLabel.NumberOfHours;
+            NumberOfWeeks = workLabel.NumberOfWeeks;
+            Language = workLabel.Language;
+            
+        }
+
+
+
         public int GetWeeks()
         {
             Subject.Groups.ToString();

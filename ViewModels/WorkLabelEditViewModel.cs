@@ -14,12 +14,72 @@ namespace AP8PO_Final.ViewModels
 
         MainWindow _mainWindow;
 
-        public ObservableCollection<Subject> Subjects { get; private set; }
+        private ObservableCollection<Subject> _subjects;
+        public ObservableCollection<Subject> Subjects
+        {
+            get
+            {
+                return _subjects;
+            }
+            set
+            {
+                _subjects = value;
+                OnPropertyChange("Subjects");
+            }
+
+        }
+
+        private ObservableCollection<Employee> _employees;
+        public ObservableCollection<Employee> Employees 
+        { 
+            get
+            {
+                return _employees;
+            }
+                
+            set
+            {
+                _employees = value;
+                OnPropertyChange("Employees");
+            }
+                
+        }
+
 
         public ObservableCollection<Group> SelectedGroups { get; set; }
 
 
 
+
+
+        private WorkLabel _selectedWorkLabel;
+        public WorkLabel SelectedWorkLabel
+        {
+            get
+            {
+                return _selectedWorkLabel;
+
+            }
+            set
+            {
+                _selectedWorkLabel = value;
+                if (value != null)
+                {
+                    Name = value.Name;
+                    LabelTypes = value.LabelTypes;
+                    NumberOfHours = value.NumberOfHours;
+                    NumberOfStudents = value.NumberOfStudents;
+                    NumberOfWeeks = value.NumberOfWeeks;
+                    Language = value.Language;
+                    Subject = value.Subject;                    
+                    Employee = value.Employee;                                      
+
+                }
+                OnPropertyChange("SelectedWorkLabel");
+
+            }
+
+        }
 
 
         private ObservableCollection<WorkLabel> _workLabels;
@@ -93,7 +153,7 @@ namespace AP8PO_Final.ViewModels
             set
             {
                 _labelTypes = value;
-                OnPropertyChange("LableType");
+                OnPropertyChange("LabelTypes");
             }
         }
 
@@ -160,8 +220,13 @@ namespace AP8PO_Final.ViewModels
 
 
 
+        public RelayCommand CommandSave { get; set; }
+
+
+
         public WorkLabelEditViewModel(MainWindow mainWindow)
         {
+            CommandSave = new RelayCommand(Save, CanSave);
             _mainWindow = mainWindow;
 
             /*
@@ -174,6 +239,22 @@ namespace AP8PO_Final.ViewModels
             _workLabels = new ObservableCollection<WorkLabel>();
             _workLabels.Add(workLabel);
             */
+
+        }
+
+        private bool CanSave()
+        {
+            return true;
+
+        }
+
+        private void Save(object param)
+        {
+            //WorkLabel workLabel = new WorkLabel(_selectedWorkLabel, _employee);
+            WorkLabel workLabel = new WorkLabel(_name, _employee, _subject, _labelTypes, _numberOfStudents, _numberOfHours, _numberOfWeeks, _language) ;
+            WorkLabels[WorkLabels.IndexOf(_selectedWorkLabel)] = workLabel;
+            SelectedWorkLabel = workLabel;
+
 
         }
 

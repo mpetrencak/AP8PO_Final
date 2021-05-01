@@ -31,7 +31,7 @@ namespace AP8PO_Final.Views
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if(this.Activate())
+            if(this.IsActive)
             {
 
                 _mainWindow.Show();

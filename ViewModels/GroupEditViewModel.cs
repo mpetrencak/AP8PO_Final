@@ -31,6 +31,7 @@ namespace AP8PO_Final.ViewModels
                     StudyForm = value.StudyForm;
                     StudyType = value.StudyType;
                     Language = value.Language;
+                    
                 }
             }
         }

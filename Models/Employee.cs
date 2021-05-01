@@ -224,7 +224,7 @@ namespace AP8PO_Final.Models
         {
 
 
-            /*
+            
             FirstName = null;
             SecondName = null;
             FullName = null;
@@ -232,7 +232,7 @@ namespace AP8PO_Final.Models
             PersonalEmail = null;
             PHdStudent = false;
             Obligation = 0;
-            */
+            
         }
 
 
