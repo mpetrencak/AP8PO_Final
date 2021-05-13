@@ -10,9 +10,10 @@ namespace AP8PO_Final.ViewModels
 {
     public class WorkLabelEditViewModel : ViewModelBase
     {
-
-
         MainWindow _mainWindow;
+
+
+        //Observable Collections
 
         private ObservableCollection<Subject> _subjects;
         public ObservableCollection<Subject> Subjects
@@ -45,13 +46,23 @@ namespace AP8PO_Final.ViewModels
                 
         }
 
+        private ObservableCollection<WorkLabel> _workLabels;
+        public ObservableCollection<WorkLabel> WorkLabels
+        {
+            get
+            {
+                return _workLabels;
+            }
+            set
+            {
+                _workLabels = value;
+                OnPropertyChange("WorkLabels");
+            }
+        }
 
-        public ObservableCollection<Group> SelectedGroups { get; set; }
 
-
-
-
-
+        
+        //selected worklabel in window
         private WorkLabel _selectedWorkLabel;
         public WorkLabel SelectedWorkLabel
         {
@@ -82,20 +93,8 @@ namespace AP8PO_Final.ViewModels
         }
 
 
-        private ObservableCollection<WorkLabel> _workLabels;
-        public ObservableCollection<WorkLabel> WorkLabels
-        {
-            get
-            {
-                return _workLabels;
-            }
-            set 
-            {
-                _workLabels = value;
-                OnPropertyChange("WorkLabels");
-            }
-        }
 
+        //properites
 
         private string _name;
         public string Name
@@ -218,29 +217,32 @@ namespace AP8PO_Final.ViewModels
         }
 
 
-
+        //commands
 
         public RelayCommand CommandSave { get; set; }
 
 
 
+
+        //ctors
+
         public WorkLabelEditViewModel(MainWindow mainWindow)
         {
             CommandSave = new RelayCommand(Save, CanSave);
             _mainWindow = mainWindow;
-
-            /*
-            Group grp = new Group("SWI",2020,Semester.Summer,100,StudyForm.FullTime,StudyType.Bc,Language.CZ);
-            ObservableCollection<Group> grps = new ObservableCollection<Group>();
-            grps.Add(grp);
-
-            Subject sub = new Subject("AP8PO",14,2,2,2,CourseCompletionType.Exam,Language.CZ,11,grps);
-            WorkLabel workLabel = new WorkLabel(sub,LabelType.Exercise,1);
-            _workLabels = new ObservableCollection<WorkLabel>();
-            _workLabels.Add(workLabel);
-            */
-
         }
+
+
+
+
+
+
+
+
+
+
+
+
 
         private bool CanSave()
         {
@@ -250,10 +252,35 @@ namespace AP8PO_Final.ViewModels
 
         private void Save(object param)
         {
-            //WorkLabel workLabel = new WorkLabel(_selectedWorkLabel, _employee);
-            WorkLabel workLabel = new WorkLabel(_name, _employee, _subject, _labelTypes, _numberOfStudents, _numberOfHours, _numberOfWeeks, _language) ;
+            
+
+            WorkLabel workLabel = new WorkLabel(_name, _employee, _subject, _labelTypes, _numberOfStudents, _numberOfHours, _numberOfWeeks, _language);
             WorkLabels[WorkLabels.IndexOf(_selectedWorkLabel)] = workLabel;
             SelectedWorkLabel = workLabel;
+
+            //removing worklabel with empty employee and removing that worklabel from Employees
+            if(_employee == null)
+            {
+                foreach (Employee employee in Employees)
+                {
+                    if (employee.WorkLabels.Contains(workLabel))
+                    {
+                        employee.WorkLabels.Remove(workLabel);
+
+                    }
+                }
+            }
+            else   //else add worklabel to employee
+            {
+                Employees[Employees.IndexOf(_employee)].WorkLabels.Add(workLabel);
+
+            }
+
+
+
+
+
+
 
 
         }

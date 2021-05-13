@@ -217,6 +217,7 @@ namespace AP8PO_Final.Models
             PersonalEmail = personalEmail;
             PHdStudent = pHdStudent;
             Obligation = obligation;
+            WorkLabels = new List<WorkLabel>();
 
         }
 
@@ -232,7 +233,19 @@ namespace AP8PO_Final.Models
             PersonalEmail = null;
             PHdStudent = false;
             Obligation = 0;
-            
+            WorkLabels = new List<WorkLabel>();
+
+
+        }
+
+
+        /// <summary>
+        /// Get work points for every worklabel..
+        /// </summary>
+        /// <returns></returns>
+        int GetPoints()
+        {
+            return 0;
         }
 
 

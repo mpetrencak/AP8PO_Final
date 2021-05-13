@@ -268,7 +268,11 @@ namespace AP8PO_Final.Models
         /// <returns></returns>
         public double GetPointsPerLabel()
         {
-            return 0;
+            double result = 0;
+
+
+
+            return result;
         }
 
         public override string ToString()
