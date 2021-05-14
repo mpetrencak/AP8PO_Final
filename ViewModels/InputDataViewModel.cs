@@ -130,13 +130,13 @@ namespace AP8PO_Final.ViewModels
         private void Generate(object param)
         {
 
-            _workLabels = new ObservableCollection<WorkLabel>();
-            WorkLabel wrklbl;
+            _workLabels = new ObservableCollection<WorkLabel>(WorkLabel.GenerateWorkLabels(Subjects));
 
 
 
 
 
+            /*
             foreach (Subject sub in Subjects)
             {
                 int id = 1;
@@ -185,7 +185,7 @@ namespace AP8PO_Final.ViewModels
                     _workLabels.Add(wrklbl);
                 }
             }
-
+            */
 
             _mainWindow.WorkLabels = new ObservableCollection<WorkLabel>(_workLabels);
             
