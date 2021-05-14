@@ -129,77 +129,16 @@ namespace AP8PO_Final.ViewModels
 
         private void Generate(object param)
         {
-
+            //Generating worklabels
             _workLabels = new ObservableCollection<WorkLabel>(WorkLabel.GenerateWorkLabels(Subjects));
-
-
-
-
-
-            /*
-            foreach (Subject sub in Subjects)
-            {
-                int id = 1;
-
-                //Lecture worklabels
-                if (sub.LectureHours > 0)
-                {
-                    wrklbl = new WorkLabel(sub, LabelType.Lecture,id++);
-                    _workLabels.Add(wrklbl);
-                }
-
-
-                //Exercise worklabels
-                if (sub.ExerciseHours > 0)
-                {
-                    int numberofExercises = sub.GetNumberOfExesices();
-                    for (int i = 0; i < numberofExercises; i++)
-                    {
-                        wrklbl = new WorkLabel(sub, LabelType.Exercise,id++);
-                        _workLabels.Add(wrklbl);
-                    }
-                }
-
-
-                //Semminar worklabels
-                if (sub.SemminarHours > 0)
-                {
-                    wrklbl = new WorkLabel(sub, LabelType.Seminar,id++);
-                    _workLabels.Add(wrklbl);
-
-                }
-
-
-                //classified credit worklabels
-                if(sub.CourseCompletionType == CourseCompletionType.ClassifiedCredit)
-                {
-                    wrklbl = new WorkLabel(sub, LabelType.ClassifiedCredit,id++);
-                    _workLabels.Add(wrklbl);
-
-                }
-                else    //exam worklabels + credit
-                {
-                    wrklbl = new WorkLabel(sub, LabelType.Credit,id++);
-                    _workLabels.Add(wrklbl);
-                    wrklbl = new WorkLabel(sub, LabelType.Exam,id++);
-                    _workLabels.Add(wrklbl);
-                }
-            }
-            */
 
             _mainWindow.WorkLabels = new ObservableCollection<WorkLabel>(_workLabels);
             
+            //passing data to worklabel viewmodel
             _mainWindow.WorkLabelEditViewModel.WorkLabels = new ObservableCollection<WorkLabel>(_workLabels);
             _mainWindow.WorkLabelEditViewModel.Employees = new ObservableCollection<Employee>(_employees);
             _mainWindow.WorkLabelEditViewModel.Employees.Add(new Employee());
-            _mainWindow.WorkLabelEditViewModel.Subjects = new ObservableCollection<Subject>(_subjects);
-            
-
-
-
-
-
-
+            _mainWindow.WorkLabelEditViewModel.Subjects = new ObservableCollection<Subject>(_subjects);        
 
         }
 

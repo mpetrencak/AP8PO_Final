@@ -193,13 +193,35 @@ namespace AP8PO_Final.Models
             
         }
 
-        public WorkLabel(Subject subject,LabelType labelType,int number)
+        /// <summary>
+        /// Ctor for generating new worklabels
+        /// </summary>
+        /// <param name="subject"></param>
+        /// <param name="labelType"></param>
+        /// <param name="number"></param>
+        public WorkLabel(Subject subject,LabelType labelType,int? number)
         {
-            Name = subject.ToString() + number.ToString();
+            if(number == null)
+            {
+                if(labelType == LabelType.Lecture)
+                {
+                    Name = subject.ToString() + "pre";
+                }
+                if(labelType == LabelType.Exam)
+                {
+                    Name = subject.ToString() + "zk";
+                }
+
+            }
+            else
+            {
+                Name = subject.ToString() + number.ToString();
+            }
+
             Employee = null;
             Subject = subject;
             LabelTypes = labelType;
-            NumberOfStudents = subject.GetStudents();
+            NumberOfStudents = subject.SizeOfGroup;
 
 
             switch(labelType)
@@ -262,7 +284,11 @@ namespace AP8PO_Final.Models
 
 
 
-
+        /// <summary>
+        /// Generate all possible worklabels
+        /// </summary>
+        /// <param name="Subjects">List of subjects</param>
+        /// <returns>List of worklabels</returns>
         public static ObservableCollection<WorkLabel> GenerateWorkLabels(ObservableCollection<Subject> Subjects)
         {
             ObservableCollection<WorkLabel> _workLabels = new ObservableCollection<WorkLabel>();
@@ -275,8 +301,15 @@ namespace AP8PO_Final.Models
                 //Lecture worklabels
                 if (sub.LectureHours > 0)
                 {
-                    wrklbl = new WorkLabel(sub, LabelType.Lecture, id++);
+                    wrklbl = new WorkLabel(sub, LabelType.Lecture, null);
                     _workLabels.Add(wrklbl);
+
+                    if(sub.CourseCompletionType == CourseCompletionType.Exam)
+                    {
+                        wrklbl = new WorkLabel(sub, LabelType.Exam, null);
+                        _workLabels.Add(wrklbl);
+
+                    }
                 }
 
 
@@ -301,20 +334,19 @@ namespace AP8PO_Final.Models
                 }
 
 
-                //classified credit worklabels
-                if (sub.CourseCompletionType == CourseCompletionType.ClassifiedCredit)
-                {
-                    wrklbl = new WorkLabel(sub, LabelType.ClassifiedCredit, id++);
-                    _workLabels.Add(wrklbl);
-
-                }
-                else    //exam worklabels + credit
-                {
-                    wrklbl = new WorkLabel(sub, LabelType.Credit, id++);
-                    _workLabels.Add(wrklbl);
-                    wrklbl = new WorkLabel(sub, LabelType.Exam, id++);
-                    _workLabels.Add(wrklbl);
-                }
+                ////classified credit worklabels
+                //if (sub.CourseCompletionType == CourseCompletionType.ClassifiedCredit)
+                //{
+                //    wrklbl = new WorkLabel(sub, LabelType.ClassifiedCredit, id++);
+                //    _workLabels.Add(wrklbl);
+                //}
+                //else    //exam worklabels + credit
+                //{
+                //    wrklbl = new WorkLabel(sub, LabelType.Credit, id++);
+                //    _workLabels.Add(wrklbl);
+                //    wrklbl = new WorkLabel(sub, LabelType.Exam, id++);
+                //    _workLabels.Add(wrklbl);
+                //}
             }
 
 
