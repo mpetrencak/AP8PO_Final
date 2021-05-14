@@ -332,21 +332,6 @@ namespace AP8PO_Final.Models
                     _workLabels.Add(wrklbl);
 
                 }
-
-
-                ////classified credit worklabels
-                //if (sub.CourseCompletionType == CourseCompletionType.ClassifiedCredit)
-                //{
-                //    wrklbl = new WorkLabel(sub, LabelType.ClassifiedCredit, id++);
-                //    _workLabels.Add(wrklbl);
-                //}
-                //else    //exam worklabels + credit
-                //{
-                //    wrklbl = new WorkLabel(sub, LabelType.Credit, id++);
-                //    _workLabels.Add(wrklbl);
-                //    wrklbl = new WorkLabel(sub, LabelType.Exam, id++);
-                //    _workLabels.Add(wrklbl);
-                //}
             }
 
 
@@ -385,17 +370,46 @@ namespace AP8PO_Final.Models
             switch (_labeltypes)
             {
                 case LabelType.Lecture:
-                    result = _subject.LectureHours * _numberOfHours;
+                    result +=  _numberOfHours * _numberOfWeeks * Weights.LectureHour;
+
+                    if(_subject.CourseCompletionType == CourseCompletionType.Exam)
+                    {
+                        result += _numberOfStudents * Weights.OneExamGiven;
+                    }
                     break;
 
                 case LabelType.Exercise:
-                    result = _subject.ExerciseHours * NumberOfHours;
+                    result += _numberOfHours * _numberOfWeeks * Weights.ExerciseHour;
+
+                    if(_subject.CourseCompletionType == CourseCompletionType.Credit)
+                    {
+                        result += _numberOfStudents * Weights.OneCreditGiven;
+                    }
+                    if(_subject.CourseCompletionType == CourseCompletionType.ClassifiedCredit)
+                    {
+                        result += _numberOfStudents * Weights.OneClassifiedCreditGiven;
+                    }
                     break;
 
+                    //pokud neni cviko ale jen seminar zapocty a klasaky zadava vedouci seminare
                 case LabelType.Seminar:
-                    result = _subject.SemminarHours * NumberOfHours;
+                    result += _numberOfHours * _numberOfWeeks * Weights.SemminaHour;
+
+                    if(_subject.ExerciseHours == 0)
+                    {
+                        if (_subject.CourseCompletionType == CourseCompletionType.Credit)
+                        {
+                            result += _numberOfStudents * Weights.OneCreditGiven;
+                        }
+                        if (_subject.CourseCompletionType == CourseCompletionType.ClassifiedCredit)
+                        {
+                            result += _numberOfStudents * Weights.OneClassifiedCreditGiven;
+                        }
+
+                    }
                     break;
             }
+
             return result;
         }
 
