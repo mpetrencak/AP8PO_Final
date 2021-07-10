@@ -198,6 +198,7 @@ namespace AP8PO_Final.ViewModels
             set 
             {
                 _numberOfWeeks = value;
+                OnPropertyChange("NumberOfWeeks");
             }
         }
 
@@ -213,6 +214,20 @@ namespace AP8PO_Final.ViewModels
             {
                 _language = value;
                 OnPropertyChange("Language");
+            }
+        }
+
+        private double _workpoints;
+        public double Workpoins
+        {
+            get
+            {
+                return _workpoints;
+            }
+            set
+            {
+                _workpoints = value;
+                OnPropertyChange("Workpoints");
             }
         }
 
@@ -266,13 +281,17 @@ namespace AP8PO_Final.ViewModels
                     if (employee.WorkLabels.Contains(workLabel))
                     {
                         employee.WorkLabels.Remove(workLabel);
-
                     }
                 }
             }
             else   //else add worklabel to employee
             {
                 Employees[Employees.IndexOf(_employee)].WorkLabels.Add(workLabel);
+
+                Employee newEmployee = new Employee(_employee, workLabel);
+                Employees.Add(newEmployee);
+                Employees.Remove(_employee);
+
 
             }
 

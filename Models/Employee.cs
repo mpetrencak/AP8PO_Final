@@ -115,7 +115,7 @@ namespace AP8PO_Final.Models
         
         private bool _pHdStudent;
         /// <summary>
-        /// True of False if employee is PHd student
+        /// True or False if employee is PHd student
         /// </summary>
         [XmlAttribute("PHdStudent")]
         public bool PHdStudent
@@ -151,6 +151,23 @@ namespace AP8PO_Final.Models
               
         }
 
+
+        private double _workpoints;
+        [XmlAttribute("Workpoints")]
+        public double Workpoins
+        {
+            get
+            {
+                _workpoints = GetPoints();
+                return _workpoints;
+            }
+            set
+            { 
+                _workpoints = value;
+            }
+        }
+
+
         /// <summary>
         /// List of work labels
         /// </summary>
@@ -167,6 +184,20 @@ namespace AP8PO_Final.Models
                 _workLabels = value;
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -195,6 +226,19 @@ namespace AP8PO_Final.Models
 
         }
 
+        public Employee(Employee employee,WorkLabel workLabel)
+        {
+            FirstName = employee.FirstName;
+            SecondName = employee.SecondName;
+            FullName = employee.FullName;
+            WorkEmail = employee.WorkEmail;
+            PersonalEmail = employee.PersonalEmail;
+            PHdStudent = employee.PHdStudent;
+            Obligation = employee.Obligation;
+            WorkLabels = employee.WorkLabels;
+            WorkLabels.Add(workLabel);
+
+        }
 
 
         /// <summary>
@@ -222,10 +266,7 @@ namespace AP8PO_Final.Models
         }
 
         public Employee()
-        {
-
-
-            
+        {            
             FirstName = null;
             SecondName = null;
             FullName = null;
@@ -239,14 +280,50 @@ namespace AP8PO_Final.Models
         }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         /// <summary>
         /// Get work points for every worklabel..
         /// </summary>
         /// <returns></returns>
-        int GetPoints()
+        public double GetPoints()
         {
-            return 0;
+            double result = 0;
+
+            foreach(WorkLabel wrklbl in WorkLabels)
+            {
+                result += wrklbl.GetPointsPerLabel();
+
+            }
+
+            return result;
         }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

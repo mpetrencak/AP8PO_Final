@@ -170,7 +170,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding FullName}" Header="Celé jméno"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding FullName}" Header="Počet úvazkových bodů"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Workpoins}" Header="Počet úvazkových bodů"/>
 
 
                 </GridView>
